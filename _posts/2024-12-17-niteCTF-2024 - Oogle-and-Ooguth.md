@@ -1,5 +1,5 @@
 ---
-title: Manipulating OAuth Scopes in Oogle and Ooguth, A niteCCTF 2024 Web Exploit
+title: Oogle and Ooguth,  niteCTF 2024 Web Challenge
 date: 2024-12-17
 categories: [CTF, Writeups]
 tags: [oauth,oauth, jwt, security, nitectf, challenge, scope-manipulation]

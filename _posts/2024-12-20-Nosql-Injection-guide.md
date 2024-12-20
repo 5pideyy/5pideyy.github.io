@@ -1,7 +1,7 @@
 ---
 title: NoSQL Injection Techniques and Exploits
 date: 2024-12-20
-categories: [Security, Writeups]
+categories: [Web Security, Nosql Injection]
 tags: [nosql, injection, mongodb, security, web, fuzzing, exploitation]
 author: spideyy
 comments: true

@@ -158,8 +158,8 @@ Construct the URL:
 
 Due to Chrome's URL blocklist behavior, encoded characters in the URL are treated literally. This means:
 
->[!NOTE]
->Chrome's URL blocklist typically operates on the raw URL string without normalizing or decoding it. This means that encoded characters are treated as literal parts of the URL rather than their decoded equivalents.
+
+>Chrome's URL blocklist typically operates on the raw URL string without normalizing or decoding it. This means that encoded characters are treated as literal parts of the URL rather than their decoded equivalents.{: .prompt-tip }
 
 - URL encoding the constructed URL bypasses the policy: `https://political-web.chal.irisc.tf/giv%65flag?tok%65n=ff71b78003353e5c769e68cb310a13eb`
 
@@ -177,8 +177,8 @@ Loading page https://political-web.chal.irisc.tf/giv%65flag?tok%65n=ff71b7800335
 timeout
 ```
 
->[!NOTE]
-> The timeout is not an issue because the time taken to render the webpage exceeds the timeout duration specified in the environment variable (`BOT_TIMEOUT`) . but the bot visits with the admin cookie and token is insterted into valid cookie
+
+> The timeout is not an issue because the time taken to render the webpage exceeds the timeout duration specified in the environment variable (`BOT_TIMEOUT`) . but the bot visits with the admin cookie and token is insterted into valid cookie. {: .prompt-tip }
 
 
 ---

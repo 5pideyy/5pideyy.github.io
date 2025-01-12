@@ -8,12 +8,21 @@ gem "jekyll-theme-chirpy", "~> 7.2", ">= 7.2.2"
 
 # Development and Test dependencies
 group :development, :test do
-  gem "html-proofer", "~> 5.0"
-  gem "nokogiri", "~> 1.18", ">= 1.18.1" # Required for HTML parsing and manipulation
-  gem "typhoeus", "~> 1.4" # Required for making HTTP requests in html-proofer
-  gem "rainbow", "~> 3.1" # For colored output in html-proofer
-  gem "pdf-reader", "~> 2.13" # Handles PDF processing
-  gem "zeitwerk", "~> 2.7" # Autoloading framework
+  gem "html-proofer", "~> 5.0.9"
+gem "nokogiri", "~> 1.18.1"
+gem "typhoeus", "~> 1.4.1"
+gem "rainbow", "~> 3.1.1"
+gem "pdf-reader", "~> 2.13.0"
+gem "zeitwerk", "~> 2.7.1"
+gem "async", "~> 2.21.1"
+gem "yell", "~> 2.2.2"
+gem "hashery", "~> 2.1.2"
+gem "console", "~> 1.29.2"
+gem "fiber-annotation", "~> 0.2.0"
+gem "io-event", "~> 1.7.5"
+gem "fiber-local", "~> 1.1.0"
+gem "fiber-storage", "~> 1.0.0"
+
 end
 
 # Windows-specific dependencies

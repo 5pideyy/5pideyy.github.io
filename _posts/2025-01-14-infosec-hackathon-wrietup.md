@@ -8,9 +8,9 @@ authors: [spidey,homelander]
 
 ---
 
-# **MOBILE**
+## **MOBILE**
 
-## **SECURE BANK (300 Points)**
+### **SECURE BANK (300 Points)**
 
 SecureBank Pvt Ltd is releasing their beta version of the banking application for bug bounty hunters. The test credentials for the test account are as follows:
 
@@ -21,11 +21,11 @@ We’ve got an APK and a server instance to mess with. Let’s get cracking—li
 
 ---
 
-### **1. Static Analysis**
+#### **1. Static Analysis**
 
 Decompiled the APK using `jadx-gui` and an online [APK decompiler](https://www.decompiler.com/). My first stop? `AndroidManifest.xml`—the cheat sheet of app permissions and activities. Found 7 activities. Let’s snoop around.
 
-#### **1.1 Activity Gossip**
+##### **1.1 Activity Gossip**
 
  **1.1.1 Messages Activity**
 
@@ -142,7 +142,7 @@ Spotted! A local SQLite database named `bankDB.db`. Let’s grab it 👀.
 
 ---
 
-#### **1.2 Database Extraction**
+##### **1.2 Database Extraction**
 
 Exported the database. Here’s what we found:
 
@@ -160,7 +160,7 @@ uid | username | acct_number | hashed_PIN      | balance
 
 ---
 
-### **2. Reverse the Hashed PIN**
+#### **2. Reverse the Hashed PIN**
 
 Let’s undo their "fancy" hashing:
 
@@ -186,9 +186,9 @@ _Boom!_ PIN reversed. Let’s take these for a spin.
 
 ---
 
-### **3. Dynamic Analysis**
+#### **3. Dynamic Analysis**
 
-#### **3.1 ADB Logging**
+##### **3.1 ADB Logging**
 
 Installed the APK, connected via `adb`, and logged requests:
 
@@ -199,7 +199,7 @@ https://ch2016112962.challenges.eng.run/user/0?secret=31733100
 
 Logged in with the provided creds. Observed API interactions. Tried swapping user IDs and PINs.
 
-#### **3.2 Admin Privileges**
+##### **3.2 Admin Privileges**
 
 Used the admin credentials from the database. And voilà! The system handed me the flag. **Secure Bank**? More like "Surrender Bank."
 
@@ -209,17 +209,17 @@ Used the admin credentials from the database. And voilà! The system handed me t
 
 ---
 
-# WEB
+## WEB
 
-## SNAP FROM URL (100 points)
+### SNAP FROM URL (100 points)
 
 Two Flask scripts are in play: `main.py`, boldly exposed to the internet, and `admin.py`, quietly minding its business on `127.0.0.1`. The goal? Sneak past URL validation, access the hidden `admin.py`, and retrieve the flag. Here's how it went down:
 
 ---
 
-### Main.py: Functionality
+#### Main.py: Functionality
 
-#### Routes
+##### Routes
 
 1. `/` **Route**:
     - Loads `index.html`, keeping things simple and uneventful.
@@ -277,7 +277,7 @@ img_urls = image_parser(res_text,url)
 
 - Fetches HTML content from the given URL and parses it for `<img>` tags. Functional, but exploitable.
 
-#### Blacklist Validation (`blacklisted` Function)
+##### Blacklist Validation (`blacklisted` Function)
 
 ```python
 blacklist = [
@@ -319,7 +319,7 @@ def blacklisted(url):
 
 ---
 
-### Admin.py Functionality
+#### Admin.py Functionality
 
 On the other side, `admin.py` serves `admin.html`, which contains the flag. It operates locally and doesn’t anticipate any interference.
 
@@ -344,7 +344,7 @@ if __name__ == '__main__':
 
 ---
 
-### The Plan to Capture the Flag
+#### The Plan to Capture the Flag
 
 1. The blacklist had a blind spot—it didn’t account for all `127.0.0.1` variations. 
 2. Using the  tool [Rebinder](https://lock.cmpxchg8b.com/rebinder.html), a domain was set up to alternately resolve to `127.0.0.1` and `127.0.0.0`.
@@ -353,7 +353,7 @@ if __name__ == '__main__':
 
 ---
 
-### Private IP Patterns: The Comma Dilemma
+#### Private IP Patterns: The Comma Dilemma
 
  a snippet of regex  that caused an interesting issue:
 
@@ -378,17 +378,17 @@ r"\b(0|o|0o|q)177\b^2130*"
 As a result, octal representations of `127.0.0.1` like `0177.0000.0000.0000` sneak past the blacklist. and gave us the flag
 
 ---
-# Reverse Engineering
+## Reverse Engineering
 
-## REWIND(100 points)
+### REWIND(100 points)
 
-#### Attachments:
+##### Attachments:
 
 * chal
 * Readme.txt
 	* It's all a matter of seconds.
 
-#### Solution:
+##### Solution:
 
 * **chal** is elf file which requires **flag.txt**(fake one) to work with. 
 * Used **ghidra** to analyze the **chal**. All the code does is bitwise/arthmetic operations. 
@@ -527,15 +527,15 @@ for i in range(len(rand)):
 
 ---
 
-## MORE THAN MEETS THE EYE (300 points )
+### MORE THAN MEETS THE EYE (300 points )
 
-#### Attachments:
+##### Attachments:
 
 * Chall
 * Readme.txt
 	* It's time to show that we are 'more than meets the eye'. 
 
-#### Solution:
+##### Solution:
 
 * **Chall** program's main function just perform xor operation on input string with `0x20` and compares with xored string stored in the program. 
 * Once we get pass that part, we have to go through another function that does a lot of if else condition checking on the input and if the string passes all the condition, only then we get the flag.
@@ -641,14 +641,14 @@ else:
 
 ---
 
-## BLINDNESS (500 points)
+### BLINDNESS (500 points)
 
-#### Attachments:
+##### Attachments:
 
 * Readme.txt
 	* Do you think you know reversing because you can analyse the files? Well, let's see how good you are when there are no files! 
 
-#### Solution:
+##### Solution:
 
 * We don't get the `elf` file for this. We'll have to connect the netcat server straight away. 
 * The challenges gives you a `base64-encoded` string of `gzip` file. We have to decode and store it as `.gz` file and unzip the file.
@@ -710,15 +710,15 @@ print(conn.recvline().decode())
 
 ---
 
-# NETWORK
+## NETWORK
 
-## PING OF SECRETS (100 points)
+### PING OF SECRETS (100 points)
 
 We got our hands on a `traffic.pcap` file, stuffed with ICMP, TCP, SSH, and even some NTP packets. The mission? Find the flag hidden in this mix. Let’s see how i captured.
 
 ---
 
-###  The ICMP secrets
+#### The ICMP secrets
 
 First stop: Wireshark. I zoomed in on the ICMP packets and noticed something curious. Each packet carried just 1 byte of data. Suspicious much? 🤔
 
@@ -751,7 +751,7 @@ It had all the right characters, but they were jumbled up like a word scramble. 
 
 ---
 
-### Sorting It Out
+#### Sorting It Out
 
 Here’s where the light bulb moment happened. What if the ICMP packets were sent letter by letter, but out of order? Sorting them by timestamp might just reveal the flag in the right sequence.
 
@@ -783,13 +783,13 @@ Flag: flag{1aUoAbGhWCXzSpBjihnv5w==}
 
 ---
 
-# FORENSICS
+## FORENSICS
 
-## FIX ME (100 points)
+### FIX ME (100 points)
 
 The challenge was straightforward: repair the broken PNG file and uncover the hidden flag. Here's how i done:
 
-### Fixing the PNG Header
+#### Fixing the PNG Header
 
 We started with a file named `chall.png`. Opening it in a hex editor, the PNG header was scrambled. A valid PNG header should begin with these 8 bytes:
 
@@ -801,7 +801,7 @@ After replacing the jumbled header with the correct values, the file's foundatio
 
 ---
 
-### Repairing the IHDR Chunk
+#### Repairing the IHDR Chunk
 
 Next, the IHDR chunk, identified by these bytes:
 
@@ -813,7 +813,7 @@ This chunk holds key information about the image, like its width, height, and bi
 
 ---
 
-### Fixing the IEND Chunk
+#### Fixing the IEND Chunk
 
 Finally, the IEND chunk, marked by:
 
@@ -825,13 +825,13 @@ This chunk, which signifies the end of a PNG file, was also corrected. With this
 
 ---
 
-### Flag
+#### Flag
 
 Once the header, IHDR, and IEND chunks were fixed, the flag appeared in plain sight within the image. Mission accomplished!
 
 ---
 
-### Tools and References
+#### Tools and References
 
 1. [PNG Structure for Beginners](https://medium.com/@0xwan/png-structure-for-beginner-8363ce2a9f73)
     

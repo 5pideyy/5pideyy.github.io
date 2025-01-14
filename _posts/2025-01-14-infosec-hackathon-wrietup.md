@@ -468,6 +468,7 @@ int main() {
 }
 ```
 * The below python3 code will do the randomization and perform operation in the characters until it receives the correct encrypted flag character(each one). 
+
 ```python
 #!/usr/bin/env python3
 import string
@@ -518,6 +519,7 @@ def running(rand)
 for i in range(len(rand)):
 	running(rand[i])
 ```
+
 * Stored the encrypted flag from the chal in `obflag` and rand lists in `rand`.
 * Run timestamp C code first. Note the timstamp and then execute the **chal**. Store the timestamp value in `seed` variable in the next C code to calculate the rand. 
 * This will spit the **flag**
@@ -632,6 +634,7 @@ if sol.check()==sat:
 else:
     print('unsat')
 ```
+
 * **Script output**:
 	`Password 1: to_be_or_not_to_be
 	Password 2: SH00k_7h4t_Sph3re_Whit_4ll_d47_literature`

@@ -8,28 +8,26 @@ authors: [spidey,homelander]
 
 ---
 
-# MOBILE
+# **MOBILE**
 
-## SECURE BANK (300 points)
+## **SECURE BANK (300 Points)**
 
-SecureBank Pvt Ltd is releasing their beta version of the banking application for bug bounty hunters. The test credentials for test account are as follows:
+SecureBank Pvt Ltd is releasing their beta version of the banking application for bug bounty hunters. The test credentials for the test account are as follows:
 
-* Account Number: `667614145`
-* PIN: `1260585352`  
+- **Account Number**: `667614145`
+- **PIN**: `1260585352`
 
-We’ve got an APK and a server instance to mess with. Let’s get cracking — literally!
-
----
-
-## Static Analysis
-
-Decompiled the APK using `jadx-gui` and an online [APK decompiler](https://www.decompiler.com/). My first stop? `AndroidManifest.xml` — the cheat sheet of app permissions and activities. Found 7 activities. Let’s snoop around.
+We’ve got an APK and a server instance to mess with. Let’s get cracking—literally!
 
 ---
 
-### Activity Gossip
+## **1. Static Analysis**
 
-#### **1. Messages Activity**
+Decompiled the APK using `jadx-gui` and an online [APK decompiler](https://www.decompiler.com/). My first stop? `AndroidManifest.xml`—the cheat sheet of app permissions and activities. Found 7 activities. Let’s snoop around.
+
+### **1.1 Activity Gossip**
+
+#### **1.1.1 Messages Activity**
 
 ```java
 public class Messages extends AppCompatActivity {  
@@ -49,7 +47,7 @@ _Spoiler alert_: Nothing juicy here. Just a motivational message: "Stay tuned fo
 
 ---
 
-#### **2. ViewProfile Activity**
+#### **1.1.2 ViewProfile Activity**
 
 ```java
 public class ViewProfile extends AppCompatActivity {  
@@ -61,11 +59,11 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_view_profile);  
         this.name = (TextView) findViewById(R.id.name);  
         this.accNo = (TextView) findViewById(R.id.accNo);  
-        Volley.newRequestQueue(this).add(new StringRequest(0, getIntent().getStringExtra("depl_URL") + "/user/" + getIntent().getStringExtra("id") + "?secret=" + getIntent().getStringExtra("pin"), new Response.Listener() { 
+        Volley.newRequestQueue(this).add(new StringRequest(0, getIntent().getStringExtra("depl_URL") + "/user/" + getIntent().getStringExtra("id") + "?secret=" + getIntent().getStringExtra("pin"), new Response.Listener() {
             public final void onResponse(Object obj) {  
                 ViewProfile.this.m6lambda$onCreate$0$comsecurebankingViewProfile((String) obj);  
             }  
-        }, new Response.ErrorListener() { 
+        }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError volleyError) {  
                 Toast.makeText(ViewProfile.this.getApplicationContext(), volleyError.toString(), 0).show();  
                 Log.d("Error is: ", volleyError.toString());  
@@ -88,7 +86,7 @@ The app sends a GET request to fetch user details with `id` and `pin` using voll
 
 ---
 
-#### **3. Customer Login Page Activity**
+#### **1.1.3 Customer Login Page Activity**
 
 This is where things get spicy! The login logic:
 
@@ -96,7 +94,7 @@ This is where things get spicy! The login logic:
 2. **Validation Checks**: Fields can’t be empty, and URL must be valid.
 3. **Authentication**:
     - Calls `dBHelper.authenticateUser()` with account number and hashed PIN.
-    - The "hashing"? Wait for it..
+    - The "hashing"? Wait for it...
 
 Here’s the PIN hashing magic:
 
@@ -116,11 +114,11 @@ This obfuscates the PIN using bitwise operations:
 2. Swaps adjacent pairs, groups of 4, and groups of 8 bits.
 3. Finally, swaps 16-bit halves.
 
-TL;DR: This swaps bits around like a Rubik's cube. Obfuscation? Sure. Real security? Not really.
+_TL;DR_: This swaps bits around like a Rubik's cube. Obfuscation? Sure. Real security? Not really.
 
 ---
 
-#### **4. DBHelper**
+#### **1.1.4 DBHelper**
 
 ```java
 public class DBHelper extends SQLiteOpenHelper {  
@@ -144,16 +142,16 @@ Spotted! A local SQLite database named `bankDB.db`. Let’s grab it 👀.
 
 ---
 
-### Database Extraction
+### **1.2 Database Extraction**
 
 Exported the database. Here’s what we found:
 
 ```bash
 sqlite> .tables
-android_metadata  customerDetails 
+android_metadata  customerDetails
 
 sqlite> SELECT * FROM customerDetails;
-uid | username | acct_number | hashed_PIN      | balance 
+uid | username | acct_number | hashed_PIN      | balance
 1   | user1    | 667614145   | 216406515827922 | 1000.0
 0   | admin    | 000000000   | 43431626549120  | 2000.0
 3   | user3    | 407142357   | 13348376939555  | 3000.0
@@ -162,7 +160,7 @@ uid | username | acct_number | hashed_PIN      | balance
 
 ---
 
-## Reverse the Hashed PIN
+## **2. Reverse the Hashed PIN**
 
 Let’s undo their "fancy" hashing:
 
@@ -184,13 +182,13 @@ public class Main {
 }
 ```
 
-Boom! PIN reversed. Let’s take these for a spin.
+_Boom!_ PIN reversed. Let’s take these for a spin.
 
 ---
 
-## Dynamic Analysis 
+## **3. Dynamic Analysis**
 
-### ADB Logging
+### **3.1 ADB Logging**
 
 Installed the APK, connected via `adb`, and logged requests:
 
@@ -201,12 +199,13 @@ https://ch2016112962.challenges.eng.run/user/0?secret=31733100
 
 Logged in with the provided creds. Observed API interactions. Tried swapping user IDs and PINs.
 
-### Admin Privileges
+### **3.2 Admin Privileges**
 
-Used the admin credentials from the database.And voilà! The system handed me the flag . **Secure Bank**? More like "Surrender Bank."
+Used the admin credentials from the database. And voilà! The system handed me the flag. **Secure Bank**? More like "Surrender Bank."
+
+**Pro Tip**: If this bank actually launched, I’d keep my money in a mattress instead. At least my mattress won’t leak my account details. 🤣
 
 
-**Pro Tip :** If this bank actually launched, I’d keep my money in a mattress instead. At least my mattress won’t leak my account details. 🤣
 
 ---
 

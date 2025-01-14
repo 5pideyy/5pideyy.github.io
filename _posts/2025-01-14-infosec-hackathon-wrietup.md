@@ -21,13 +21,13 @@ We’ve got an APK and a server instance to mess with. Let’s get cracking—li
 
 ---
 
-## **1. Static Analysis**
+### **1. Static Analysis**
 
 Decompiled the APK using `jadx-gui` and an online [APK decompiler](https://www.decompiler.com/). My first stop? `AndroidManifest.xml`—the cheat sheet of app permissions and activities. Found 7 activities. Let’s snoop around.
 
-### **1.1 Activity Gossip**
+#### **1.1 Activity Gossip**
 
-#### **1.1.1 Messages Activity**
+##### **1.1.1 Messages Activity**
 
 ```java
 public class Messages extends AppCompatActivity {  
@@ -47,7 +47,7 @@ _Spoiler alert_: Nothing juicy here. Just a motivational message: "Stay tuned fo
 
 ---
 
-#### **1.1.2 ViewProfile Activity**
+##### **1.1.2 ViewProfile Activity**
 
 ```java
 public class ViewProfile extends AppCompatActivity {  
@@ -86,7 +86,7 @@ The app sends a GET request to fetch user details with `id` and `pin` using voll
 
 ---
 
-#### **1.1.3 Customer Login Page Activity**
+##### **1.1.3 Customer Login Page Activity**
 
 This is where things get spicy! The login logic:
 
@@ -118,7 +118,7 @@ _TL;DR_: This swaps bits around like a Rubik's cube. Obfuscation? Sure. Real sec
 
 ---
 
-#### **1.1.4 DBHelper**
+##### **1.1.4 DBHelper**
 
 ```java
 public class DBHelper extends SQLiteOpenHelper {  
@@ -142,7 +142,7 @@ Spotted! A local SQLite database named `bankDB.db`. Let’s grab it 👀.
 
 ---
 
-### **1.2 Database Extraction**
+#### **1.2 Database Extraction**
 
 Exported the database. Here’s what we found:
 
@@ -160,7 +160,7 @@ uid | username | acct_number | hashed_PIN      | balance
 
 ---
 
-## **2. Reverse the Hashed PIN**
+### **2. Reverse the Hashed PIN**
 
 Let’s undo their "fancy" hashing:
 
@@ -186,9 +186,9 @@ _Boom!_ PIN reversed. Let’s take these for a spin.
 
 ---
 
-## **3. Dynamic Analysis**
+### **3. Dynamic Analysis**
 
-### **3.1 ADB Logging**
+#### **3.1 ADB Logging**
 
 Installed the APK, connected via `adb`, and logged requests:
 
@@ -199,7 +199,7 @@ https://ch2016112962.challenges.eng.run/user/0?secret=31733100
 
 Logged in with the provided creds. Observed API interactions. Tried swapping user IDs and PINs.
 
-### **3.2 Admin Privileges**
+#### **3.2 Admin Privileges**
 
 Used the admin credentials from the database. And voilà! The system handed me the flag. **Secure Bank**? More like "Surrender Bank."
 
@@ -234,7 +234,7 @@ def home():
     - Accepts a POST request with a `url` parameter.
     - Validates the URL and attempts to parse images. Sounds secure, but...
 
-#### Key Steps in `/images`
+##### Key Steps in `/images`
 
 1. **Extract URL**:
 

@@ -27,7 +27,7 @@ Decompiled the APK using `jadx-gui` and an online [APK decompiler](https://www.d
 
 #### **1.1 Activity Gossip**
 
-##### **1.1.1 Messages Activity**
+ **1.1.1 Messages Activity**
 
 ```java
 public class Messages extends AppCompatActivity {  
@@ -47,7 +47,7 @@ _Spoiler alert_: Nothing juicy here. Just a motivational message: "Stay tuned fo
 
 ---
 
-##### **1.1.2 ViewProfile Activity**
+ **1.1.2 ViewProfile Activity**
 
 ```java
 public class ViewProfile extends AppCompatActivity {  
@@ -86,7 +86,7 @@ The app sends a GET request to fetch user details with `id` and `pin` using voll
 
 ---
 
-##### **1.1.3 Customer Login Page Activity**
+ **1.1.3 Customer Login Page Activity**
 
 This is where things get spicy! The login logic:
 
@@ -118,7 +118,7 @@ _TL;DR_: This swaps bits around like a Rubik's cube. Obfuscation? Sure. Real sec
 
 ---
 
-##### **1.1.4 DBHelper**
+ **1.1.4 DBHelper**
 
 ```java
 public class DBHelper extends SQLiteOpenHelper {  
@@ -234,7 +234,7 @@ def home():
     - Accepts a POST request with a `url` parameter.
     - Validates the URL and attempts to parse images. Sounds secure, but...
 
-##### Key Steps in `/images`
+ **Key Steps in `/images`**
 
 1. **Extract URL**:
 
@@ -380,7 +380,7 @@ As a result, octal representations of `127.0.0.1` like `0177.0000.0000.0000` sne
 ---
 # Reverse Engineering
 
-## 1. Rewind(100 points)
+## REWIND(100 points)
 
 #### Attachments:
 
@@ -527,7 +527,7 @@ for i in range(len(rand)):
 
 ---
 
-## 2. More than meets the eye (300 points )
+## MORE THAN MEETS THE EYE (300 points )
 
 #### Attachments:
 
@@ -641,7 +641,7 @@ else:
 
 ---
 
-## 3. Blindness (500 points)
+## BLINDNESS (500 points)
 
 #### Attachments:
 

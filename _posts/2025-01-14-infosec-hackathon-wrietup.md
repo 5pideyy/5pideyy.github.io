@@ -447,6 +447,7 @@ int main(){
 }
 ```
 * The below C code will generate the random generated values based on timestamp. This code will give randint array for 15 timestamp. One of them will be as same as the **chal**.
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -523,7 +524,6 @@ for i in range(len(rand)):
 
 
 ---
-
 
 ## 2. More than meets the eye (300 points )
 

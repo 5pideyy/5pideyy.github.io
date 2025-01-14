@@ -378,7 +378,7 @@ r"\b(0|o|0o|q)177\b^2130*"
 As a result, octal representations of `127.0.0.1` like `0177.0000.0000.0000` sneak past the blacklist. and gave us the flag
 
 ---
-## Reverse Engineering
+## REVERSE ENGINEERING
 
 ### REWIND(100 points)
 

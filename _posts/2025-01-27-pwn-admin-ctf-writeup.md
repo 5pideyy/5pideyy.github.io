@@ -1,6 +1,6 @@
 --- 
 title: Binary Exploitation -  Admin?
-date: 2025-01-027 
+date: 2025-01-27 
 categories: [CTF, Writeups] 
 tags: [ctf, buffer_overflow , pwn ] 
 author: 0xhyder

@@ -23,7 +23,7 @@ we got a ELF executable file,
 
 checksec,
 
-![[/assets/images/image3.png]]
+![image3](/assets/images/image3.png)
 
 From the initial inspection of the ELF executable file,
 

@@ -19,7 +19,7 @@ Can you become admin?
 
 we got a ELF executable file,
 
-![[/assets/images/image1.png]]
+![image1](/assets/images/image1.png)
 
 checksec,
 
@@ -74,10 +74,11 @@ b'aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaata
 
 ```
 
-![[/assets/images/image2.png]]
+![image2](/assets/images/image2.png)
+
 
 However, after testing, it was observed that the EIP register was not overwritten. Upon further inspection of the assembly code:
-![[/assets/images/image4.png]]
+![image3](/assets/images/image4.png)
 
 From the disassembly, it was noticed that the variable `var_14` is stored at `ebp - 0xc`. The value of `var_14` is compared with `0x23456723` at `main+89`. Using a debugger to set the break point at the address 0x56556315 to inspect the value:
 
@@ -128,4 +129,4 @@ p.interactive()
 ```
 
 got the flag,
-![[/assets/images/image5.png]]
+![image4](/assets/images/image5.png)

@@ -1,12 +1,12 @@
 --- 
-title: Binary Exploitation : Admin?
+title: Binary Exploitation -  Admin?
 date: 2025-01-027 
 categories: [CTF, Writeups] 
-tags: [ctf, buffer overflow ] 
-author: 
+tags: [ctf, buffer_overflow , pwn ] 
+author: 0xhyder
 description: A walkthrough of the pwn challenge from the IIT BHU - Codefest CTF 2025
-
 ---
+
 ### Description
 
 ### 100
@@ -19,11 +19,11 @@ Can you become admin?
 
 we got a ELF executable file,
 
-![[NOTES/blog_c/img1/image(1).png]]
+![[/assets/images/image1.png]]
 
 checksec,
 
-![[image(4).png]]
+![[/assets/images/image3.png]]
 
 From the initial inspection of the ELF executable file,
 
@@ -74,10 +74,10 @@ b'aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaata
 
 ```
 
-![[image(1) 1.png]]
+![[/assets/images/image2.png]]
 
 However, after testing, it was observed that the EIP register was not overwritten. Upon further inspection of the assembly code:
-![[NOTES/blog_c/img1/image(2).png]]
+![[/assets/images/image4.png]]
 
 From the disassembly, it was noticed that the variable `var_14` is stored at `ebp - 0xc`. The value of `var_14` is compared with `0x23456723` at `main+89`. Using a debugger to set the break point at the address 0x56556315 to inspect the value:
 
@@ -128,4 +128,4 @@ p.interactive()
 ```
 
 got the flag,
-![[image(3).png]]
+![[/assets/images/image5.png]]

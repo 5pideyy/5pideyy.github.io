@@ -1,12 +1,11 @@
 ---
-title: The Mystery of `127.0.0.1`, `0.0.0.0`, and `localhost` – Simplified and Fun
+title: The Mystery of 127.0.0.1, 0.0.0.0, and localhost – Simplified and Fun
 date: 2025-01-28
 categories: [Networking, Development]
 tags: [localhost, 0.0.0.0, loopback, networking, servers]
 description: A simple and clear explanation of the differences between 127.0.0.1, 0.0.0.0, and localhost, with practical use cases for Python developers.
 author: spidey
 ---
-# The Mystery of `127.0.0.1`, `0.0.0.0`, and `localhost` – Simplified and Fun
 
 You’ve just started a Python server, excited to see it in action, but then reality hits. Why can’t your friend on the same network access your server? Why does using `0.0.0.0` suddenly make things work? Let’s demystify `127.0.0.1`, `0.0.0.0`, and `localhost` in a simple and fun way.
 

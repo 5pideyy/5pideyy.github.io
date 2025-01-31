@@ -122,9 +122,8 @@ A **PHP filter chain** is used to prepend the filename we specify to the uploade
 
 When uploading:
 
-```
 ![](/assets/images/Pasted%20image%2020250131000038.png)
-```
+
 
 ---
 
@@ -136,9 +135,8 @@ I used the following payload to exploit LFI:
 php://filter/convert.base64-encode|convert.base64-decode/resource=/etc/passwd
 ```
 
-```
 ![](/assets/images/Pasted%20image%2020250131000334.png)
-```
+\
 
 When accessing the PNG file, it revealed the contents of `/etc/passwd`. **Whoayy! We got LFI!**
 
@@ -152,9 +150,7 @@ I tried accessing the default path:
 /var/www/html/wordpress/wp-config.php
 ```
 
-```
 ![](/assets/images/Pasted%20image%2020250131012239.png)
-```
 
 The MySQL database was running locally on **172.17.0.1**. Even brute-forcing the WordPress configuration didn't yield credentials.
 

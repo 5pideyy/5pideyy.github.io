@@ -7,9 +7,6 @@ author: Spidey
 description: "A thrilling tale of me vs. a DNS server, where a little NSEC-walking magic turned a stubborn server into a snitch."  
 ---
 
-
-# **Hunting Down the Flag: A DNS Adventure**  
-
 When I saw the challenge name—**"ZONEy.eno"**—it immediately screamed **DNS** at me. And with UDP port `5007` open, I knew I was dealing with something interesting. Time to roll up my sleeves and start digging (pun absolutely intended).  
 
 ---

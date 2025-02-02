@@ -143,3 +143,7 @@ This was a **classic case of NSEC-walking**, where a misconfigured DNSSEC setup 
 Moral of the story? If a challenge involves **DNS**, don't just fire random queries and hope for the best. **Use NSEC queries to uncover hidden zones.**  
 
 Alright, time to move on to the next challenge. Hopefully, it’s not another DNS one...
+
+## Want to join a crew of like-minded problem solvers?
+
+NOVA is the place to be! If you're looking to level up your skills, collaborate on cool projects, and have fun along the way, hit me up. Drop a DM to `5pidey` on Discord, and let’s make things happen! 🔥

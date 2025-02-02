@@ -3,7 +3,7 @@ title: "How I Sweet-Talked a DNS Server into Giving Me the Flag (Nullcon Goa Hac
 date: 2025-02-02  
 categories: [CTF, DNS Shenanigans, Security]  
 tags: [NSEC, DNSSEC, CTF, Digging for Flags]  
-author: Spidey  
+author: spidey
 description: "A thrilling tale of me vs. a DNS server, where a little NSEC-walking magic turned a stubborn server into a snitch."  
 ---
 

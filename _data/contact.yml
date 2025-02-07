@@ -1,18 +1,36 @@
 #  The contact options.
 
-- type: github
-  icon: "fab fa-github"
+- type: instagram
+  icon: "fab fa-instagram"
+  url: 'https://www.instagram.com/n0va.in'
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: 'https://www.linkedin.com/company/team-n0va/'
 
-- type: email
-  icon: "fas fa-envelope"
-  noblank: true # open link in current tab
+- type: discord
+  icon: 'fa-brands fa-discord'   
+  url:  'https://discord.gg/TBc3bpmJ'  
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+- type: whatsapp
+  icon: 'fa-brands fa-square-whatsapp'
+  url:  'https://discord.gg/TBc3bpmJ' 
+
+# - type: email
+  # icon: "fas fa-envelope"
+  # noblank: true # open link in current tab
+
+# - type: hackthebox
+#   icon: '/assets/images/favicon/htb.ico'   
+#   url:  'https://app.hackthebox.com/teams/overview/5351'  
+
+# - type: ctftime
+#   icon: 'assets/images/favicons/ctftime.ico'   
+#   url:  'https://ctftime.org/team/48032'  
+
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon

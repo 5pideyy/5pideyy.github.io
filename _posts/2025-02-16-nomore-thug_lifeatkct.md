@@ -15,7 +15,7 @@ Hey, you can check the screenshot of our DM with thug_lifeatkct to understand wh
 ![dm](/assets/images/dm.png)\
 *"Nice try, kid. We respect the effort, but if you're gonna scam, at least do it right. This takes skill—something you clearly don't have. Next time, don't forget who's watching."*
 
-~😘 **Team NOVA **
+~😘 Team NOVA 
 
 ---
 
@@ -109,7 +109,6 @@ And to top it off, instead of keeping quiet, they ran their mouths. So yeah, it 
 
 This was a lesson in **why cybersecurity matters.** If you're building something shady, at least don't leave your name in it. More importantly, don't scam people at all—especially in a place full of hackers. 
 
-Better luck next time, D****.
 
 ---
 

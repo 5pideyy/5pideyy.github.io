@@ -6,7 +6,7 @@ tags: [Outlook, Scam, Cybersecurity, Forensics]
 author: l4tmur
 image:
   path: /assets/images/thuglife-cover.png
---------------
+---
 
 # No More Thug Life, Kid
 

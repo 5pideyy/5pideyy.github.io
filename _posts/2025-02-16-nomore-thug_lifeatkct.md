@@ -1,5 +1,4 @@
 ---
-
 title: No More Thug Life in KCT – How We Busted a Fake Outlook Scam
 date: 2025-02-16
 categories: [Cybersecurity, Scams, Ethical Hacking]

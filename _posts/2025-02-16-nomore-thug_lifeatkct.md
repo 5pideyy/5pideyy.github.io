@@ -4,8 +4,6 @@ date: 2025-02-16
 categories: [Cybersecurity, Scams, Ethical Hacking]
 tags: [Outlook, Scam, Cybersecurity, Forensics]
 author: l4tmur
-image:
-  path: /assets/images/thuglife-cover.jpg
 ---
 
 ## Introduction

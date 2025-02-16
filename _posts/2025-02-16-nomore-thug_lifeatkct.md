@@ -7,22 +7,15 @@ author: l4tmur
 image:
   path: /assets/images/thuglife-cover.png
 ---
-
 # No More Thug Life, Kid
 
-After tracking their system path, we knew we had them. If you're curious about how we uncovered the scam, you're in the right place. We reached out with a DM to see their reaction, knowing we had all the proof we needed. Of course, we took screenshots to document everything.
+Hey, you can check the screenshot of our DM with thug_lifeatkct to understand what went down and why we sent that message. Read the full blog to see how we tracked them down and exposed their game.
 
 **What we told them:**  
 ![dm](/assets/images/dm.png)\
-*"Nice try, kid. We respect the effort, but if you're gonna scam, at least do it right. This takes skill—something you clearly don’t have. Next time, don’t forget who’s watching."*
+*"Nice try, kid. We respect the effort, but if you're gonna scam, at least do it right. This takes skill—something you clearly don't have. Next time, don't forget who's watching."*
 
-\~😘 **Team NOVA (Real Thug)**
-
-
-
-**No more thug life at KCT, Mr. D(kid).**\
-Next time, scam properly.\
-And clean up your code.
+\~😘 **Team NOVA **
 
 ---
 
@@ -63,7 +56,7 @@ In mobile forensics, `.so` (shared object) files are always worth checking. We f
 #### **Why?**
 
 - These files contain compiled native code and often reveal sensitive paths, hardcoded strings, or debugging logs left by developers.
-- Many developers clean up their code before publishing, but these guys didn’t—which made our job easier.
+- Many developers clean up their code before publishing, but these guys didn't—which made our job easier.
 
 ### Step 3: The Smoking Gun – The File Path That Exposed Them
 
@@ -73,14 +66,14 @@ We ran the following command to check for any hardcoded secrets:
 strings libapp.so | grep -iE 'password|passwd|file://|key|username|firebase|auth|token|apikey|secret|oauth|bearer|jwt|client_id|client_secret|access_token|refresh_token|ftp|sftp|admin|private|ssh|db_password|db_user|root|credentials|aws_access_key|aws_secret|google_api_key|facebook_app_id|twilio|slack_token|webhook|encryption|keystore|cert|certificate|proxy|debug|log'
 ```
 
-And guess what? Jackpot. They didn’t even clean up their build files properly. We found this:  
+And guess what? Jackpot. They didn't even clean up their build files properly. We found this:  
 ![strings-result](/assets/images/strings-result.png)
 
 
 
-📂 `/home/<d********>/Dev/thuglife/kumaraguru institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
+📂 `/home/<d********>/Dev/thuglife/kumaraguru%20institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
 
-That’s right. **Thug life ended in a single decompile.**
+That's right. **Thug life ended in a single decompile.**
 
 #### **Their biggest mistakes?**
 
@@ -97,16 +90,16 @@ They basically signed their own confession.
 Besides leaving a trail a toddler could follow, these guys made some classic rookie mistakes:
 
 1. **Leaving system paths in the APK** – Congrats, you doxxed yourself.
-2. **Not securing their backend** – If you’re gonna fake Outlook, at least do it right.
-3. **Thinking they wouldn’t get caught** – Bro, some hackers are literally roaming around our college. What did you expect?
+2. **Not securing their backend** – If you're gonna fake Outlook, at least do it right.
+3. **Thinking they wouldn't get caught** – Bro, some hackers are literally roaming around our college. What did you expect?
 
 ---
 
-## The Aftermath – The ₹5 Scam
+## The Aftermath – The ₹7 Scam
 
 At first, we thought, *“Okay, just some students messing around.”* But then we found out they were charging for these fake outpasses. 💀
 
-**₹5-7 per request**—seriously? They had a whole underground outpass black market running from their fake app.
+**₹7 per request**—seriously? They had a whole underground outpass black market running from their fake app.
 
 And to top it off, instead of keeping quiet, they ran their mouths. So yeah, it was time for some fun.
 
@@ -114,14 +107,15 @@ And to top it off, instead of keeping quiet, they ran their mouths. So yeah, it 
 
 ## Final Thoughts
 
-This was a lesson in **why cybersecurity matters.** If you’re building something shady, at least don’t leave your name in it. But more importantly, don’t scam people at all—especially in a place full of ethical hackers. 😉
+This was a lesson in **why cybersecurity matters.** If you're building something shady, at least don't leave your name in it. More importantly, don't scam people at all—especially in a place full of hackers. 
 
 Better luck next time, D****.
 
 ---
 
 ### Want to reach out?
-Yo, Mr. Scamster, still crying in the corner? Maybe it's time to upgrade from "Thuglife" to "Caught in 4K." Wanna see how real hackers operate? Feel free to connect with **l4tmur** on [LinkedIn](https://www.linkedin.com/in/0xl4tmur). Just know—mentorship ain't an option, but public humiliation? Always free. 😎🔥
+
+Curious about real cybersecurity? Connect with **l4tmur** on [LinkedIn](https://www.linkedin.com/in/0xl4tmur). No mentorship just lessons learned the hard way.
 
 Better luck next time, D\*\*\*\*.
 

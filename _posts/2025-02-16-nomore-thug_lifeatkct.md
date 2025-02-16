@@ -118,4 +118,3 @@ Better luck next time, D****.
 Curious about real cybersecurity? Connect with **l4tmur** on [LinkedIn](https://www.linkedin.com/in/0xl4tmur). No mentorship just lessons learned the hard way.
 
 Better luck next time, D\*\*\*\*.
-

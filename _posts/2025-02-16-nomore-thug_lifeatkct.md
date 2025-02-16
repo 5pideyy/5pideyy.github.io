@@ -71,7 +71,7 @@ And guess what? Jackpot. They didn't even clean up their build files properly. W
 
 
 
-📂 `/home/<d********>/Dev/thuglife/kumaraguru%20institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
+📂 `/home/<d********>/Dev/thuglife/Redacted%20institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
 
 That's right. **Thug life ended in a single decompile.**
 
@@ -79,7 +79,7 @@ That's right. **Thug life ended in a single decompile.**
 
 - They left their **system username** in the app.
 - The project folder literally said **"thuglife."**
-- The app was built under **"kumaraguru institutions"**—so even the college name was there.
+- The app was built under **"Redacted institutions"**—so even the college name was there.
 
 They basically signed their own confession.
 

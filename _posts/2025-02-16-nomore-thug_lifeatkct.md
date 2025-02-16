@@ -95,7 +95,6 @@ After finding their system path, we decided to DM them—just to see their react
 
 ![dm](/assets/images/dm.png)
 
-![comment](/assets/images/comment.png)
 
 **No more thug life at kct, Mr.D(kid)**
 

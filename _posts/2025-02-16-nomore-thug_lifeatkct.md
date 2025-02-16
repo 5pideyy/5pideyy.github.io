@@ -15,7 +15,7 @@ Hey, you can check the screenshot of our DM with thug_lifeatkct to understand wh
 ![dm](/assets/images/dm.png)\
 *"Nice try, kid. We respect the effort, but if you're gonna scam, at least do it right. This takes skill—something you clearly don't have. Next time, don't forget who's watching."*
 
-\~😘 **Team NOVA **
+~😘 **Team NOVA **
 
 ---
 

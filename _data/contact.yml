@@ -12,10 +12,6 @@
   icon: 'fa-brands fa-discord'   
   url:  'https://discord.gg/TBc3bpmJ'  
 
-- type: whatsapp
-  icon: 'fa-brands fa-square-whatsapp'
-  url:  'https://chat.whatsapp.com/JjWUpcL0TYdAS2UQojp1bV' 
-
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab

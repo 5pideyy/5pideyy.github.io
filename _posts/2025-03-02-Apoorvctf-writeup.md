@@ -46,7 +46,7 @@ In the vast digital realm, **Blog-1** awaited brave developers. The mission? Cra
 
 > **Author:** _Rhul_
 
-[http://chals1.apoorvctf.xyz:5001/](http://chals1.apoorvctf.xyz:5001/)
+[https://chals1.apoorvctf.xyz:5001/](https://chals1.apoorvctf.xyz:5001/)
 
 ---
 

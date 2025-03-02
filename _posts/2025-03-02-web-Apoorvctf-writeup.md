@@ -1,5 +1,5 @@
 ---
-title: ApoorvCTF Writeup  
+title: ApoorvCTF 2025 Writeup  
 date: 2025-03-02  
 categories: [CTF, Writeups, HTB]  
 tags: [ctf, security, jwt, oidc, race-condition, api-exploitation, jwk-injection]  

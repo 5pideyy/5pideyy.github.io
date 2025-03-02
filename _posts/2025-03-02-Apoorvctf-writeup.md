@@ -77,11 +77,11 @@ Like any good hacker, I smelled an exploit. **Race condition** came to mind, so 
 
 Boom! Here's what happened:
 
-![Race Condition in Action](Pasted%20image%2020250302195457.png)
+![Race Condition in Action](/assets/images/race.png)
 
 After sending the requests in parallel…
 
-![Success!](Pasted%20image%2020250302204632.png)
+![Success!](/assets/images/success.png)
 🎉 **Did I get the reward?** Nope. Instead, I got **Skibidi Toilet!** 🚽🤣
 
 But I wasn’t done yet.
@@ -169,7 +169,7 @@ This means one thing... **JWK header injection time!** 🎯
     - Change `"scope": "basic"` → `"scope": "sigma_viewer_blogs"`
 6. **Send the request...** 
 
-![JWT FORGE](Pasted%20image%2020250302211354.png)
+![JWT FORGE](/assets/images/JWT.png)
 
 👀 **Response:**  
 **Flag acquired!** 🎉

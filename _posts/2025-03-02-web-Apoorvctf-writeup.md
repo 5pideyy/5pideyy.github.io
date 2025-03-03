@@ -294,7 +294,6 @@ Running this get `apoorvctf{w41t\#_th15_1s_1ll3g4l!}`
 
   
 
-
 # SEO CEO
 
   
@@ -374,7 +373,6 @@ In the vast digital realm, **Blog-1** awaited brave developers. The mission? Cra
 
   
 
----
 
   
 
@@ -398,89 +396,41 @@ Before diving into the challenge, let's break down the **rules of the game**:
 
 Clearly, patience was _not_ an option.
 
-  
-
----
-
-  
-
 ## **Breaking the System with a Race Condition**
-
-  
 
 Like any good hacker, I smelled an exploit. **Race condition** came to mind, so I fired up **Burp Suite** faster than you can say "CTF." 🚀
 
-  
-
 ### **The Plan:**
 
-  
-
 1. **Intercept** the blog post request.
-
 2. **Send it to the Repeater** (because once is never enough).
-
 3. **Fire off six identical requests simultaneously.**
 
-  
-
-### **The Execution:**
-
-  
+## **The Execution:**
 
 Boom! Here's what happened:
 
-  
-
 ![Race Condition in Action](/assets/images/race.png)
 
-  
-
 After sending the requests in parallel…
-
-  
 
 ![Success!](/assets/images/success.png)
 
 🎉 **Did I get the reward?** Nope. Instead, I got **Skibidi Toilet!** 🚽🤣
 
-  
-
 But I wasn't done yet.
-
-  
-
----
-
-  
 
 ## **API Version Downgrade for the Win**
 
-  
-
 While accessing the gift, I noticed this sneaky endpoint:
-
-  
 
 `https://chals1.apoorvctf.xyz:5001/api/v2/gift`
 
-  
-
 So, I did what any self-respecting CTF player would do—**downgraded the API version** to **v1**.
-
-  
 
 And just like that,  **FLAG SECURED!**
 
-  
-
  `apoorvctf{s1gm@_s1gm@_b0y}`
-
-  
-
----
-
-  
 
 # Blog-2 🔐
 
@@ -488,47 +438,23 @@ After Blog-1's failure, Blud started making blog-2. This time with efficient and
 
 **authentication system**. Lil' did bro know… 💀 **his design was more fragile than my GPA.**
 
-  
-
 > **Author:** _Rhul_
-
-  
 
 🔗 [Blog-2 Link](https://blog-2-omega.vercel.app/)
 
-  
-
----
-
-  
-
 ##  The Hint:
-
-  
 
 > "Bro was that dumb to validate ___ in j__..."
 
-  
-
 Hmmm, let's play fill in the blanks. 🤔
 
-  
-
 - **Same functionality as Blog-1** but **now with "strong" OIDC auth** instead of that useless restriction system?
-
 - Ohhh, **OIDC?!** Bro, I literally wrote a blog about it during **NITECCTF 2024**.
-
 - Let's check if `/.well-known/openid-configuration` exists!
-
-  
 
 ### Discovery Phase:
 
-  
-
 BOOM. Found this:
-
-  
 
 ```json
 
@@ -536,15 +462,9 @@ BOOM. Found this:
 
 ```
 
-  
-
 **HS256?** Bro signed his tokens with a symmetric key... we're SO back. 😂
 
-  
-
 - Exploring the functionality further, the **decoded JWT** looked like this:
-
-  
 
 ```json
 
@@ -552,39 +472,20 @@ BOOM. Found this:
 
 ```
 
-  
-
 **Problem:** The scope is `basic`.
 
 **Goal:** Change it to `sigma_viewer_blogs` to unlock the goodies.
 
-  
-
----
-
-  
-
 ##  The Breakthrough: JWK Header Injection
-
-  
 
 Remember the hint? Let's complete it:
 
-  
-
 -  **JWK**  
-
 -  **JWT**
-
-  
 
 This means one thing... **JWK header injection time!** 🎯
 
-  
-
 ### **🎭 Forging the Magic Token** (Use JWT Editor tool)
-
-  
 
 1. **Generate a new RSA key**
 
@@ -600,25 +501,17 @@ This means one thing... **JWK header injection time!** 🎯
 
 6. **Send the request...**
 
-  
-
 ![JWT FORGE](/assets/images/JWT.png)
 
 👀 **Response:**  
 
 **Flag acquired!** 🎉
 
-  
-
 `apoorvctf{s1gm@_b10g_r3@d3r_f0r_r3@l}`
 
   
-  
-
 # Kogarashi Café - The Forbidden Recipe 🍜
 
-  
-  
 
 Description
 

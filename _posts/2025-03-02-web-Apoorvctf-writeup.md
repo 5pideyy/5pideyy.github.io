@@ -8,16 +8,15 @@ description: A comprehensive writeup covering all challenges from the APOORV CTF
 ---
 
 
-# Holy Rice 
-
+## Holy Rice 
 
 ![Holy Rice Challenge](/assets/images/holy_rice.png)
 
-## Solution:
+### Solution:
 
 We've got an executable file that prompts for a password when run. Our goal? **Find or bypass** the password check.
 
-### **Initial Analysis**
+#### **Initial Analysis**
 
 Running `file rice-cooker` reveals that it's **stripped**, meaning there's no symbol table to assist debugging. So, we turn to **Ghidra**, a powerful decompiler, to analyze the binary.
 
@@ -294,7 +293,7 @@ Running this get `apoorvctf{w41t\#_th15_1s_1ll3g4l!}`
 
   
 
-# SEO CEO
+## SEO CEO
 
   
 
@@ -310,7 +309,7 @@ They're optimizing SEO to show this garbage?!
 
   
 
-## Understanding the Web's Inner Workings
+### Understanding the Web's Inner Workings
 
   
 
@@ -318,7 +317,7 @@ When I think of SEO, my mind immediately jumps to **robots.txt** after all, that
 
   
 
-## Following the Digital Trail
+### Following the Digital Trail
 
   
 
@@ -334,7 +333,7 @@ With a name like that, I knew something was up.
 
   
 
-## The Mystery of the "Goofy Ahh Route"
+### The Mystery of the "Goofy Ahh Route"
 
   
 
@@ -358,7 +357,7 @@ Thinking like a CTF player, I decided to "talk" to the URL. I added `**?flag=yes
 
   
 
-# Blog-1 
+## Blog-1 
 
 
 In the vast digital realm, **Blog-1** awaited brave developers. The mission? Craft a captivating blog filled with enchanting posts, lively comments, and secure user authentication. But there was a catch—only one blog per day! The clock was ticking. Ready for the **Blog-1 adventure**?
@@ -373,7 +372,7 @@ In the vast digital realm, **Blog-1** awaited brave developers. The mission? Cra
 
   
 
-## Understanding the Web's Inner Workings
+### Understanding the Web's Inner Workings
 
   
 
@@ -393,17 +392,17 @@ Before diving into the challenge, let's break down the **rules of the game**:
 
 Clearly, patience was _not_ an option.
 
-## Breaking the System with a Race Condition
+### Breaking the System with a Race Condition
 
 Like any good hacker, I smelled an exploit. **Race condition** came to mind, so I fired up **Burp Suite** faster than you can say "CTF." ��
 
-### The Plan:
+#### The Plan:
 
 1. **Intercept** the blog post request.
 2. **Send it to the Repeater** (because once is never enough).
 3. **Fire off six identical requests simultaneously.**
 
-## The Execution:
+### The Execution:
 
 Boom! Here's what happened:
 
@@ -417,7 +416,7 @@ After sending the requests in parallel…
 
 But I wasn't done yet.
 
-## API Version Downgrade for the Win
+### API Version Downgrade for the Win
 
 While accessing the gift, I noticed this sneaky endpoint:
 
@@ -429,7 +428,7 @@ And just like that,  **FLAG SECURED!**
 
  `apoorvctf{s1gm@_s1gm@_b0y}`
 
-# Blog-2 🔐
+## Blog-2 🔐
 
 After Blog-1's failure, Blud started making blog-2. This time with efficient and new Auth system based on OIDC. Little did bro know.... His Design was a DISASTER.
 
@@ -439,7 +438,7 @@ After Blog-1's failure, Blud started making blog-2. This time with efficient and
 
 🔗 [Blog-2 Link](https://blog-2-omega.vercel.app/)
 
-##  The Hint:
+###  The Hint:
 
 > "Bro was that dumb to validate ___ in j__..."
 
@@ -449,7 +448,7 @@ Hmmm, let's play fill in the blanks. 🤔
 - Ohhh, **OIDC?!** Bro, I literally wrote a blog about it during **NITECCTF 2024**.
 - Let's check if `/.well-known/openid-configuration` exists!
 
-### Discovery Phase:
+#### Discovery Phase:
 
 BOOM. Found this:
 
@@ -473,7 +472,7 @@ BOOM. Found this:
 
 **Goal:** Change it to `sigma_viewer_blogs` to unlock the goodies.
 
-##  The Breakthrough: JWK Header Injection
+###  The Breakthrough: JWK Header Injection
 
 Remember the hint? Let's complete it:
 
@@ -482,7 +481,7 @@ Remember the hint? Let's complete it:
 
 This means one thing... **JWK header injection time!** 🎯
 
-### 🎭 Forging the Magic Token (Use JWT Editor tool)
+#### 🎭 Forging the Magic Token (Use JWT Editor tool)
 
 1. **Generate a new RSA key**
 
@@ -507,7 +506,7 @@ This means one thing... **JWK header injection time!** 🎯
 `apoorvctf{s1gm@_b10g_r3@d3r_f0r_r3@l}`
 
   
-# Kogarashi Café - The Forbidden Recipe ��
+## Kogarashi Café - The Forbidden Recipe ��
 
 
 Description
@@ -816,7 +815,7 @@ p.interactive()
 
   
 
-# Kogarashi Café - The Secret Blend ☕
+## Kogarashi Café - The Secret Blend ☕
 
   
 

@@ -7,6 +7,10 @@ authors: [spidey,0xhyder,jjkings]
 description: A comprehensive writeup covering all challenges from the APOORV CTF, including web, pwn, and rev challenges.
 ---
 
+## Final Standings
+
+![Scoreboard](/assets/images/image.png)
+We secured 15th place! 🎉 Crushed every challenge in web, crypto, binary exploitation, and OSINT—but when it came to hardware and AI, we hit a wall. 😅 Well, you can't win 'em all!
 
 ## Holy Rice 
 

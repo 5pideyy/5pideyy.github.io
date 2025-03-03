@@ -409,7 +409,7 @@ In the vast digital realm, **Blog-1** awaited brave developers. The mission? Cra
 
 > **Author:** _Rhul_
 
-[http://chals1.apoorvctf.xyz:5001/](http://chals1.apoorvctf.xyz:5001/)
+[https://chals1.apoorvctf.xyz:5001/](https://chals1.apoorvctf.xyz:5001/)
 
 ---
 
@@ -455,7 +455,7 @@ But I wasn't done yet.
 
 While accessing the gift, I noticed this sneaky endpoint:
 
-`http://chals1.apoorvctf.xyz:5001/api/v2/gift`
+`https://chals1.apoorvctf.xyz:5001/api/v2/gift`
 
 So, I did what any self-respecting CTF player would do—**downgraded the API version** to **v1**.
 

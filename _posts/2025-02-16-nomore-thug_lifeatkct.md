@@ -20,7 +20,7 @@ Hey, you can check the screenshot of our DM with thug_lifeatRedacted to understa
 
 ## Introduction
 
-Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their home folder in the APK.
+Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their complete plugin file path uncleaned in the APK.
 
 *Note: The kid's name starts with D, so let's call him D*\*\*\* .
 

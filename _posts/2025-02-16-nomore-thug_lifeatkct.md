@@ -20,13 +20,13 @@ Hey, you can check the screenshot of our DM with thug_lifeatkct to understand wh
 
 ## Introduction
 
-Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses. And then they get caught because they left their home folder in the APK.
+Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their home folder in the APK.
 
-*Note: The kid's name starts with D, so let's call him D*\*\*\*.\*
+*Note: The kid's name starts with D, so let's call him D*\*\*\* .
 
 Yes, this actually happened.
 
-Our college cyber team, **NOVA**, recently uncovered a fake Outlook system designed to generate approval emails for hostel outpasses. The masterminds? A group of "developers" who thought they had pulled off the perfect scam—until we checked their `libapp.so` file and found their system path.
+**NOVA**, recently uncovered a fake Outlook system designed to generate approval emails for hostel outpasses. The masterminds? A group of "developers" who thought they had pulled off the perfect scam—until we checked their `libapp.so` file and found their system path.
 
 **Spoiler alert:** It even had their name in it.
 

@@ -5,13 +5,13 @@ categories: [Cybersecurity, Scams, Ethical Hacking]
 tags: [Outlook, Scam, Cybersecurity, Forensics]
 author: l4tmur
 image:
-  path: /assets/images/thuglife-cover.png
+  path: /assets/images/thuglife-cover1.png
 ---
 
-Hey, you can check the screenshot of our DM with thug_lifeatkct to understand what went down and why we sent that message. Read the full blog to see how we tracked them down and exposed their game.
+Hey, you can check the screenshot of our DM with thug_lifeatRedacted to understand what went down and why we sent that message. Read the full blog to see how we tracked them down and exposed their game.
 
 **What we told them:**  
-![dm](/assets/images/dm.png)\
+![dm](/assets/images/dm1.png)\
 *"Nice try, kid. We respect the effort, but if you're gonna scam, at least do it right. This takes skill—something you clearly don't have. Next time, don't forget who's watching."*
 
 ~😘 Team NOVA 
@@ -20,7 +20,7 @@ Hey, you can check the screenshot of our DM with thug_lifeatkct to understand wh
 
 ## Introduction
 
-Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their home folder in the APK.
+Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their complete plugin file path uncleaned in the APK.
 
 *Note: The kid's name starts with D, so let's call him D*\*\*\* .
 

@@ -1,5 +1,5 @@
 ---
-title: No More Thug Life in KCT – How We Busted a Fake Outlook Scam
+title: No More Thug Life, Kid – How We Busted a Fake Outlook Scam
 date: 2025-03-21
 categories: [Cybersecurity, Scams, Ethical Hacking]
 tags: [Outlook, Scam, Cybersecurity, Forensics]
@@ -7,7 +7,6 @@ author: l4tmur
 image:
   path: /assets/images/thuglife-cover.png
 ---
-# No More Thug Life, Kid
 
 Hey, you can check the screenshot of our DM with thug_lifeatkct to understand what went down and why we sent that message. Read the full blog to see how we tracked them down and exposed their game.
 

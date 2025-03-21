@@ -22,7 +22,6 @@ Hey, you can check the screenshot of our DM with thug_lifeatRedacted to understa
 
 Some students dream of becoming ethical hackers. Others… well, they create fake Outlook apps to scam their way into getting hostel outpasses even charging students for it and earning thousands per month. And then they get caught because they left their complete plugin file path uncleaned in the APK.
 
-*Note: The kid's name starts with D, so let's call him D*\*\*\* .
 
 Yes, this actually happened.
 
@@ -70,7 +69,7 @@ And guess what? Jackpot. They didn't even clean up their build files properly. W
 
 
 
-📂 `/home/<d********>/Dev/thuglife/Redacted%20institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
+📂 `/home/<********>/Dev/thuglife/Redacted%20institutions/outlook/.dart_tool/flutter_build/dart_plugin_registrant.dart`
 
 That's right. **Thug life ended in a single decompile.**
 
@@ -115,4 +114,4 @@ This was a lesson in **why cybersecurity matters.** If you're building something
 
 Curious about real cybersecurity? Connect with **l4tmur** on [LinkedIn](https://www.linkedin.com/in/0xl4tmur). No mentorship just lessons learned the hard way.
 
-Better luck next time, D\*\*\*\*.
+Better luck next time, Kid.

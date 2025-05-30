@@ -116,57 +116,70 @@ Here's the decryption logic I used:
 
 
 ```python
-def rc4_init(key_bytes):
-    """Perform RC4 key-scheduling algorithm (KSA) with the provided key."""
-    sbox = list(range(256))  # Initialize S-box with values 0–255
-    j = 0
+def custom_rc4_init(encryption_key):
+    """
+    Initializes the S-box (state array) similar to RC4's KSA (Key-Scheduling Algorithm).
+    """
+    s_box = list(range(256))  # Initialize S-box with values from 0 to 255
+    j_idx = 0  # Helper index for swapping
+
+    # Populate S-box
     for i in range(256):
-        j = (j + sbox[i] + key_bytes[i % len(key_bytes)]) % 256
-        sbox[i], sbox[j] = sbox[j], sbox[i]  # Swap values
-    return sbox
+        # Update j_idx based on current S-box element, key byte, and previous j_idx
+        j_idx = (j_idx + s_box[i] + encryption_key[i % len(encryption_key)]) % 256
+        # Swap elements in S-box
+        s_box[i], s_box[j_idx] = s_box[j_idx], s_box[i]
+    return s_box
 
-def custom_shuffle(sbox):
+def custom_second_shuffle(s_box):
     """
-    Perform a custom shuffle on the S-box.
-    Only iterates 28 times instead of the usual RC4 PRGA.
+    Performs a second round of shuffling on the S-box, affecting only the first 28 elements.
+    This modifies the S-box further from a standard RC4 KSA.
     """
-    i = 0
-    j = 0
-    for count in range(28):
-        i = (i + 1) % 256
-        j = (j + sbox[i]) % 256
-        sbox[i], sbox[j] = sbox[j], sbox[i]
-    return sbox
+    idx_a = 0  # First index for swapping
+    idx_b = 0  # Second index for swapping
 
-def xor_decrypt(sbox, ciphertext_bytes):
-    """
-    Decrypt the ciphertext by XORing each byte with corresponding S-box value.
-    Assumes S-box was modified using a custom RC4-based process.
-    """
-    return bytes([ciphertext_bytes[i] ^ sbox[i] for i in range(len(ciphertext_bytes))])
+    # Shuffle the first 28 elements of the S-box
+    for k in range(28):
+        idx_a = (idx_a + 1) % 256
+        idx_b = (idx_b + s_box[k]) % 256 # Note: 'k' is used here, not idx_a
+        s_box[idx_a], s_box[idx_b] = s_box[idx_b], s_box[idx_a]
+    return s_box
 
-# RC4 key as a list of byte values
-rc4_key = [0xad, 0xde, 0xde, 0xc0, 0xad, 0xde, 0xde, 0xc0]
+def recover_original_data(s_box, encrypted_data):
+    """
+    Recovers the original plaintext by XORing the encrypted data
+    with the corresponding elements from the modified S-box.
+    """
+    # XOR each byte of encrypted_data with the corresponding S-box element
+    # The length is fixed to 28 based on the challenge's design.
+    return bytes([encrypted_data[i] ^ s_box[i] for i in range(28)])
 
-# The encrypted data (28 bytes)
-encrypted_bytes = [
+# --- Main execution ---
+
+# The encryption key used in the custom RC4-like algorithm
+cipher_key = [0xad, 0xde, 0xde, 0xc0, 0xad, 0xde, 0xde, 0xc0]
+
+# The encrypted data (ciphertext) that needs to be recovered
+encrypted_flag_bytes = [
     0x5a, 0xe3, 0xd9, 0x62, 0x22, 0x9f, 0x59, 0xc9,
     0xe2, 0x18, 0xd1, 0x37, 0xe7, 0xf7, 0x3e, 0x66,
     0xea, 0x88, 0x33, 0x44, 0x6c, 0x73, 0x85, 0x16,
     0x5d, 0x6c, 0xef, 0xa3
 ]
 
-# Run RC4 key scheduling
-sbox = rc4_init(rc4_key)
+# Step 1: Initialize the S-box with the cipher key
+initialized_s_box = custom_rc4_init(cipher_key)
 
-# Apply the 28-round custom shuffle
-shuffled_sbox = custom_shuffle(sbox)
+# Step 2: Perform the custom second shuffling on the S-box
+final_s_box = custom_second_shuffle(initialized_s_box)
 
-# Recover the original input by XORing with the modified S-box
-decrypted_output = xor_decrypt(shuffled_sbox, encrypted_bytes)
+# Step 3: Recover the original flag bytes by XORing with the final S-box
+recovered_flag_bytes = recover_original_data(final_s_box, encrypted_flag_bytes)
 
-# Display the recovered input (safely decoding bytes)
-print("Recovered input:", decrypted_output.decode(errors="replace"))
+# Print the recovered flag, attempting to decode as a string.
+# 'errors="replace"' handles any bytes that don't form valid UTF-8 characters.
+print("Recovered input:", recovered_flag_bytes.decode(errors="replace"))
 
 ```
 

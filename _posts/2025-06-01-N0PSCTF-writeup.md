@@ -73,7 +73,7 @@ This smells like **SSRF**.
 
 ---
 
-### 🕳️ Confirming SSRF: The Fun Way
+### Confirming SSRF: The Fun Way
 
 Tried a NoSQL-style input:
 

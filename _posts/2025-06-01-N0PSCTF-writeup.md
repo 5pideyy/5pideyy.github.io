@@ -58,7 +58,7 @@ Sent in some spicy nonsense:
 
 And PHP screamed:
 
-```
+```php
 Fatal error: curl_setopt(): cURL option must not contain any null bytes
 ```
 
@@ -83,11 +83,11 @@ Tried a NoSQL-style input:
 
 Got this gem:
 
-```
+```php
 str_starts_with(): Argument #1 ($haystack) must be of type string, array given
 ```
 
-Aha! It's doing:
+Aha! It May be doing:
 
 ```php
 if (str_starts_with($blog, "http://"))

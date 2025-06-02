@@ -15,8 +15,11 @@ author: [spidey,de8u9]
 Can you help me recover the secret to clone a security badge and open the secure door to free n00psy.
 
 **Hint 1** : The comms are repeating a single operation over and over again...
+
 **Hint 2** :  Some curves are quite known, aren’t they?
+
 **Files**  : `SignatureLog.txt` , `Secret.zip`
+
 #### First Look
 the `Secret.zip` seems to be encrypted having 2 files
 
@@ -263,7 +266,7 @@ But I'm in a CTF, so naturally, I tried to break it.
 
 ---
 
-###  JavaScript Spoils the Mystery
+####  JavaScript Spoils the Mystery
 
 The frontend made it *way too easy* to see how things worked:
 
@@ -281,7 +284,7 @@ Clearly, some PHP backend is fetching blog data using that `blog` parameter. Tim
 
 ---
 
-###  Fuzzin’ and Breakin’
+####  Fuzzin’ and Breakin’
 
 Sent in some spicy nonsense:
 
@@ -306,7 +309,7 @@ This smells like **SSRF**.
 
 ---
 
-### Confirming SSRF: The Fun Way
+#### Confirming SSRF: The Fun Way
 
 Tried a NoSQL-style input:
 
@@ -332,7 +335,7 @@ Boom. We’re in SSRF town.
 
 ---
 
-### But Then, the Filters
+#### But Then, the Filters
 
 Tried:
 
@@ -354,7 +357,7 @@ if (!str_contains($url, 'backend')) {
 }
 ```
 
-###  `/blog.php?blog=http://backend/`?
+####  `/blog.php?blog=http://backend/`?
 
 * No errors.
 * But also **no output**.
@@ -375,7 +378,7 @@ So the backend itself is mirroring the same data. Kinda boring, but useful confi
 
 ---
 
-### Now the Clever Bit: The \`\`\*\* Bypass\*\*
+#### Now the Clever Bit: The \`\`\*\* Bypass\*\*
 
 Tried:
 
@@ -389,7 +392,7 @@ Tried:
 
 ---
 
-###  Why Does `http://backend@127.0.0.1/` Work?
+####  Why Does `http://backend@127.0.0.1/` Work?
 
 This is an old SSRF trick using **Basic Auth syntax** in URLs:
 
@@ -405,13 +408,14 @@ So `http://backend@127.0.0.1:8080/` is interpreted by the browser or curl (and P
 **The username is ignored** by the server if there's no password challenge.
 
 ✔ The filter sees `"backend"` in the string, so it passes
+
 ✔ But the actual request goes to `127.0.0.1:8080`
 
 Classic SSRF bypass. You love to see it.
 
 ---
 
-### Port-Scanning the Backyard
+#### Port-Scanning the Backyard
 
 I hit all the classics:
 
@@ -437,7 +441,7 @@ N0PS{S5rF_1s_Th3_n3W_W4y}
 
 ---
 
-### TL;DR
+#### TL;DR
 
 * Frontend calls `/blog.php?blog=all`, individual posts via ID
 * Backend does:

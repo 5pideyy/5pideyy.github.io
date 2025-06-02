@@ -121,7 +121,7 @@ if (!str_contains($url, 'backend')) {
 }
 ```
 
-###  `/blog.php?blog=http://backend/`?
+###  `/blog.php?blog=http://backend/`?
 
 * No errors.
 * But also **no output**.
@@ -257,16 +257,16 @@ these seems to be [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_S
 raw = open("SignatureLog.txt").readlines()
 data = []
 for i in range(0,len(raw),3):
-    id = int(raw[i].split(" ")[-1][:-3])
-    r = int(raw[i+1].split(" ")[-1].strip(),16)
-    s = int(raw[i+2].split(" ")[-1].strip(),16)
-    data.append((id,r,s))
+    id = int(raw[i].split(" ")[-1][:-3])
+    r = int(raw[i+1].split(" ")[-1].strip(),16)
+    s = int(raw[i+2].split(" ")[-1].strip(),16)
+    data.append((id,r,s))
 
 for (id,r,s) in data:
-    for d2 in data:
-        if id!=d2[0] and r!=d2[1]:
-            print(id,d2[0])
-            break
+    for d2 in data:
+        if id!=d2[0] and r!=d2[1]:
+            print(id,d2[0])
+            break
 ```
 
 ![Image](/assets/images/Pasted_image_20250602182519.png)
@@ -277,31 +277,31 @@ bamm , the `SignatureLog.txt` contains multiple signature with same `r` meaning 
 import os
 import sys
 path = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.realpath(os.path.abspath(__file__)))))
+    os.path.dirname(os.path.dirname(os.path.realpath(os.path.abspath(__file__)))))
 if sys.path[1] != path:
-    sys.path.insert(1, path)
+    sys.path.insert(1, path)
 from shared import solve_congruence
 from Crypto.Util.number import long_to_bytes
 def attack(n, m1, r1, s1, m2, r2, s2):
-    """
-    Recovers the nonce and private key from two messages signed using the same nonce.
-    :param n: the order of the elliptic curve
-    :param m1: the first message
-    :param r1: the signature of the first message
-    :param s1: the signature of the first message
-    :param m2: the second message
-    :param r2: the signature of the second message
-    :param s2: the signature of the second message
-    :return: generates tuples containing the possible nonce and private key
-    """
-    for k in solve_congruence(int(s1 - s2), int(m1 - m2), int(n)):
-        for x in solve_congruence(int(r1), int(k * s1 - m1), int(n)):
-            yield int(k), int(x)
+    """
+    Recovers the nonce and private key from two messages signed using the same nonce.
+    :param n: the order of the elliptic curve
+    :param m1: the first message
+    :param r1: the signature of the first message
+    :param s1: the signature of the first message
+    :param m2: the second message
+    :param r2: the signature of the second message
+    :param s2: the signature of the second message
+    :return: generates tuples containing the possible nonce and private key
+    """
+    for k in solve_congruence(int(s1 - s2), int(m1 - m2), int(n)):
+        for x in solve_congruence(int(r1), int(k * s1 - m1), int(n)):
+            yield int(k), int(x)
 
 import hashlib
 def hash_message(m: str):
-    h = hashlib.sha256(m.encode()).digest()
-    return int.from_bytes(h, byteorder='big')
+    h = hashlib.sha256(m.encode()).digest()
+    return int.from_bytes(h, byteorder='big')
 
 n = int("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", 16)
 m1 = hash_message("Approve access for ID 16400215")
@@ -371,16 +371,16 @@ from matplotlib import pyplot as plt
 from scipy.ndimage import binary_closing
 from Crypto.Util.number import bytes_to_long, long_to_bytes
 
-threshold = 30           # threshold for detect ascend/descend
-max_spike_width = 9       # samples: ignore dips shorter than this
+threshold = 30           # threshold for detect ascend/descend
+max_spike_width = 9       # samples: ignore dips shorter than this
 
 def find_segments_with_debounce(data, threshold, max_spike_width):
-    above_raw = data > threshold
-    above_clean = binary_closing(above_raw, structure=np.ones(max_spike_width))
-    d = np.diff(above_clean.astype(int))
-    ascends = np.where(d == 1)[0] + 1
-    descends = np.where(d == -1)[0] + 1
-    return ascends, descends, above_raw, above_clean
+    above_raw = data > threshold
+    above_clean = binary_closing(above_raw, structure=np.ones(max_spike_width))
+    d = np.diff(above_clean.astype(int))
+    ascends = np.where(d == 1)[0] + 1
+    descends = np.where(d == -1)[0] + 1
+    return ascends, descends, above_raw, above_clean
   
 traces = np.load("traces_ECC.npy",allow_pickle=True)
 print(traces.shape)
@@ -392,10 +392,10 @@ asc, desc, mask_raw, mask_clean = find_segments_with_debounce(mean_trace, thresh
 gaps = []
 j = 0
 for d in desc:
-    while j < len(asc) and asc[j] <= d:
-        j += 1
-    if j < len(asc):
-        gaps.append(asc[j] - d)
+    while j < len(asc) and asc[j] <= d:
+        j += 1
+    if j < len(asc):
+        gaps.append(asc[j] - d)
 ```
 Plotting for debugging and parameters adjustment
 ![Image](/assets/images/Pasted_image_20250602193113.png)
@@ -406,8 +406,8 @@ plt.hlines(threshold, t[0], t[-1], linestyles='--', color='gray', label='Thresho
 
 # Overlay cleaned plateau segments
 for start, end in zip(asc, desc):
-    plt.plot(t[start:end], mean_trace[start:end], linewidth=4,
-                label='Plateau' if start == asc[0] else None)
+    plt.plot(t[start:end], mean_trace[start:end], linewidth=4,
+                label='Plateau' if start == asc[0] else None)
 
 ymin, ymax = mean_trace.min(), mean_trace.max()
 plt.vlines(t[asc], ymin, ymax, colors='green', linestyles=':', label='Ascend')

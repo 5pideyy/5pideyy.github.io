@@ -4,7 +4,7 @@ date: 2025-05-31
 categories: [CTF, Writeup]
 tags: [N0PS, CTF, Web, Crypto, Reversing, Forensics, Pwn, OSINT]
 description: A comprehensive write-up of the N0PS CTF 2025 by Team NOVA, sharing insights and solutions for various challenges tackled during the competition.
-author: spidey
+author: [spidey,de8u9]
 ---
 
 ## WebTopia
